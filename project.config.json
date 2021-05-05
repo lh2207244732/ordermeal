@@ -2,7 +2,7 @@
   "miniprogramRoot": "miniprogram/",
   "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": true,
     "postcss": true,
@@ -10,7 +10,7 @@
     "minified": true,
     "newFeature": true,
     "coverView": true,
-    "nodeModules": false,
+    "nodeModules": true,
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
@@ -33,9 +33,14 @@
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
     "userConfirmedBundleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./miniprogram/package.json",
+        "miniprogramNpmDistDir": "./miniprogram/"
+      }
+    ]
   },
   "appid": "wx467218d9637de124",
   "projectname": "ordermeal",

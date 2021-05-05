@@ -44,6 +44,8 @@
     </view>
   </view>
 
+  <van-button type="primary">按钮</van-button>
+
 
   <!-- 操作数据库 -->
   <view class="uploader">
