@@ -1,51 +1,12 @@
-// pages/home/home.js
+// pages/search/search.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    actionSheetShow: false,
-    diningRoomActiveIndex: 0,
-    diningRoom: [
-      {
-        name: '满庭芳',
-        index: 0
-      },
-      {
-        name: '沁园春',
-        index: 1
-      }
-    ]
-  },
 
-  //搜索框点击
-  handleSearchClick() {
-    //跳转搜索页
-    wx.navigateTo({
-      url: '/pages/search/search'
-    })
   },
-
-  //切换地址点击
-  changeAddress() {
-    this.setData({
-      actionSheetShow: true
-    })
-  },
-
-  //动作面板关闭
-  onActionSheetClose() {
-    this.setData({ actionSheetShow: false });
-  },
-  //动作面板选择
-  onActionSheetSelect(event) {
-    let activeIndex = event.detail.index
-    this.setData({
-      diningRoomActiveIndex: activeIndex
-    })
-  },
-
 
   /**
    * 生命周期函数--监听页面加载

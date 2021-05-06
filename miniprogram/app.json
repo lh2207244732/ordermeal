@@ -4,6 +4,7 @@
     "pages/trends/trends",
     "pages/order/order",
     "pages/user/user",
+    "pages/search/search",
     "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -61,6 +62,10 @@
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "van-button": "@vant/weapp/button/index"
+    "van-button": "@vant/weapp/button/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-dropdown-item": "@vant/weapp/dropdown-item/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index"
   }
 }

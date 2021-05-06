@@ -1,0 +1,6 @@
+.primary_color {
+  color: #19b5fe;
+}
+.primary_background_color {
+  background-color: #19b5fe;
+}

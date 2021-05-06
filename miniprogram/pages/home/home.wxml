@@ -1,0 +1,30 @@
+<view class="page">
+
+<!-- 搜索部分 -->
+<van-search
+  label="{{ diningRoom[diningRoomActiveIndex].name }}"
+  shape="round"
+  background="#19b5fe"
+  placeholder="搜索美食"
+  use-action-slot
+  bind:focus="handleSearchClick"
+>
+  <!-- <van-dropdown-menu slot="action">
+    <van-dropdown-item value="{{ value }}" options="{{ diningRoom }}" />
+  </van-dropdown-menu> -->
+  <view slot="action" bind:tap="changeAddress">切换</view>
+  
+</van-search>
+
+
+<!-- 选择餐厅动作面板 -->
+<van-action-sheet
+  show="{{ actionSheetShow }}"
+  actions="{{ diningRoom }}"
+  cancel-text="取消"
+  bind:close="onActionSheetClose"
+  bind:select="onActionSheetSelect"
+  bind:cancel="onActionSheetClose"
+/>
+
+</view>
