@@ -1,2 +1,22 @@
 <!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="pag_user">
+	<!-- 用户信息面板 -->
+	<!-- <view class="user_info_wrap">
+		<image class="user_bg" src="{{userInfo.avatarUrl}}" ></image>
+		<view class="user_info" >
+			<image class="user_icon" src="{{userInfo.avatarUrl}}" ></image>
+			<view class="user_name"  >{{userInfo.nickName}}</view>
+		</view>
+	</view> -->
+	<van-card
+  desc="{{userInfo.nickName}}"
+  title="用户名"
+  thumb="{{ userInfo.avatarUrl }}"
+>
+<view slot="footer">
+    <van-button size="mini">退出</van-button>
+  </view>
+</van-card>
+	<!-- <navigator 
+	url="/pages/login/login" hover-class="navigator-hover">登录</navigator> -->
+</view>

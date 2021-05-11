@@ -1,19 +1,30 @@
-// pages/user/user.js
+// pages/login/login.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-	userInfo:{}
+
   },
+  getUserProfile(e) {
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        const {userInfo}=res
+        wx.setStorageSync('userInfo', userInfo)
+        // 跳转到个人中心页面
+        wx.navigateBack({
+          delta: 1,
+        })
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-	const userInfo=wx.getStorageSync('userInfo')
-	console.log(userInfo)
-	this.setData({userInfo})
+
   },
 
   /**

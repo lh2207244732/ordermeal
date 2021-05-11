@@ -6,6 +6,7 @@
     "pages/user/user",
     "pages/search/search",
     "pages/index/index",
+    "pages/login/login",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
@@ -66,6 +67,7 @@
     "van-search": "@vant/weapp/search/index",
     "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
     "van-dropdown-item": "@vant/weapp/dropdown-item/index",
-    "van-action-sheet": "@vant/weapp/action-sheet/index"
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-card": "@vant/weapp/card/index"
   }
 }
