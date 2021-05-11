@@ -5,20 +5,7 @@
     "pages/order/order",
     "pages/user/user",
     "pages/search/search",
-    "pages/index/index",
-    "pages/login/login",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/im/room/room"
+    "pages/login/login"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

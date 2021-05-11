@@ -4,3 +4,11 @@
 .primary_background_color {
   background-color: #19b5fe;
 }
+view {
+  box-sizing: border-box;
+}
+.flex_center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

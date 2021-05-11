@@ -1,30 +1,97 @@
 <view class="page">
 
-<!-- 搜索部分 -->
-<van-search
-  label="{{ diningRoom[diningRoomActiveIndex].name }}"
-  shape="round"
-  background="#19b5fe"
-  placeholder="搜索美食"
-  use-action-slot
-  bind:focus="handleSearchClick"
->
-  <!-- <van-dropdown-menu slot="action">
-    <van-dropdown-item value="{{ value }}" options="{{ diningRoom }}" />
-  </van-dropdown-menu> -->
-  <view slot="action" bind:tap="changeAddress">切换</view>
-  
-</van-search>
+  <!-- 搜索部分 -->
+  <view class="search_section primary_background_color">
+    <view class="search_wrap" bindtap="handleSearch">
+      <van-search label="{{ diningRoom[diningRoomActiveIndex].name }}" shape="round" disabled background="#19b5fe"
+        placeholder="搜索美食"></van-search>
+    </view>
+    <view class="change_address flex_center primary_background_color" bindtap="handleChangeAddress">切换</view>
+  </view>
+
+  <!-- 选择餐厅动作面板 -->
+  <van-action-sheet show="{{ actionSheetShow }}" actions="{{ diningRoom }}" cancel-text="取消"
+    bind:close="onActionSheetClose" bind:select="onActionSheetSelect" bind:cancel="onActionSheetClose" />
+
+  <!-- 热销 -->
+  <view class="hot_section">
+    <scroll-view class="hot_scroll_wrap" scroll-x="true" scroll-with-animation scroll-anchoring
+    >
+      <view class="hot_item">
+        <view class="hot_item_head">
+          <image mode="widthFix" class="store_avatar" src="../../static/test/store_avatar.png"></image>
+          <view class="store_name">自选CIA店铺</view>
+        </view>
+        <view class="hot_item_content">
+          <view class="hot_item_line">
+            <text class="goods_index">1</text>
+            <image mode="widthFix" class="goods_avatar" src="../../static/test/goods_avatar.png"></image>
+            <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
+          </view>
+          <view class="hot_item_line">
+            <text class="goods_index">2</text>
+            <image mode="widthFix" class="goods_avatar" src="../../static/test/goods_avatar.png"></image>
+            <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
+          </view>
+          <view class="hot_item_line">
+            <text class="goods_index">3</text>
+            <image mode="widthFix" class="goods_avatar" src="../../static/test/goods_avatar.png"></image>
+            <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
+          </view>
+        </view>
+      </view>
+      <view class="hot_item">
+        <view class="hot_item_head">
+          <image mode="widthFix" class="store_avatar" src="../../static/test/store_avatar.png"></image>
+          <view class="store_name">自选CIA店铺</view>
+        </view>
+        <view class="hot_item_content">
+          <view class="hot_item_line">
+            <text class="goods_index">1</text>
+            <image mode="widthFix" class="goods_avatar" src="../../static/test/goods_avatar.png"></image>
+            <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
+          </view>
+          <view class="hot_item_line">
+            <text class="goods_index">2</text>
+            <image mode="widthFix" class="goods_avatar" src="../../static/test/goods_avatar.png"></image>
+            <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
+          </view>
+          <view class="hot_item_line">
+            <text class="goods_index">3</text>
+            <image mode="widthFix" class="goods_avatar" src="../../static/test/goods_avatar.png"></image>
+            <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="hot_item">
+        <view class="hot_item_head">
+          <image mode="widthFix" class="store_avatar" src="../../static/test/store_avatar.png"></image>
+          <view class="store_name">自选CIA店铺</view>
+        </view>
+        <view class="hot_item_content">
+          <view class="hot_item_line">
+            <text class="goods_index">1</text>
+            <image mode="widthFix" class="goods_avatar" src="../../static/test/goods_avatar.png"></image>
+            <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
+          </view>
+          <view class="hot_item_line">
+            <text class="goods_index">2</text>
+            <image mode="widthFix" class="goods_avatar" src="../../static/test/goods_avatar.png"></image>
+            <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
+          </view>
+          <view class="hot_item_line">
+            <text class="goods_index">3</text>
+            <image mode="widthFix" class="goods_avatar" src="../../static/test/goods_avatar.png"></image>
+            <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
+          </view>
+        </view>
+      </view>
 
 
-<!-- 选择餐厅动作面板 -->
-<van-action-sheet
-  show="{{ actionSheetShow }}"
-  actions="{{ diningRoom }}"
-  cancel-text="取消"
-  bind:close="onActionSheetClose"
-  bind:select="onActionSheetSelect"
-  bind:cancel="onActionSheetClose"
-/>
+    </scroll-view>
+  </view>
+
+
 
 </view>

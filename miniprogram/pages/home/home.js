@@ -20,7 +20,7 @@ Page({
   },
 
   //搜索框点击
-  handleSearchClick() {
+  handleSearch() {
     //跳转搜索页
     wx.navigateTo({
       url: '/pages/search/search'
@@ -28,7 +28,7 @@ Page({
   },
 
   //切换地址点击
-  changeAddress() {
+  handleChangeAddress() {
     this.setData({
       actionSheetShow: true
     })
