@@ -1,2 +1,80 @@
-<!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<view class="page">
+
+  <!-- 顶部tab -->
+  <view class="top_tab_wrap">
+    <van-tabs>
+      <van-tab title="全部">
+        <van-empty description="暂无订单" />
+      </van-tab>
+      <van-tab title="待做餐">
+        <view class="order_list_wrap">
+
+          <view class="order_item">
+            <view class="store_wrap">
+              <view class="store_info">
+                <image class="store_avatar" mode="aspectFill" src="https://img2.baidu.com/it/u=806680654,2055993577&fm=26&fmt=auto&gp=0.jpg"></image>
+                <text class="store_name">德克士餐厅怡海店</text>
+                <van-icon name="arrow" class="store_arrow" />
+              </view>
+              <view class="order_status">待取餐</view>
+            </view>
+            <view class="order_product_list">
+              <van-card 
+            num="2"
+            price="2.00"
+            desc="描述信息"
+            title="商品标题"
+            thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
+          />
+          <van-card 
+            num="2"
+            price="2.00"
+            desc="描述信息"
+            title="商品标题"
+            thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
+          />
+            </view>
+            <view class="order_price_wrap">
+              <view class="order_index_wrap">
+                <text class="order_index_text">您的排号:</text>
+                <text class="order_index_num">234</text>
+              </view>
+              <view class="total_price_wrap">
+                <text class="total_price_text order_index_text">实付款:</text>
+                <text class="price_icon">￥</text>
+                <text class="total_price_num">3423</text>
+              </view>
+            </view>
+            <view class="">
+              
+            </view>
+            <view class="order_operation_wrap">
+              <van-button size="small">申请退款</van-button>
+              <van-button size="small" type="danger">确认收货</van-button>
+            </view>
+          
+          
+          </view>
+          <view class="order_item">
+            <view class="store_wrap">
+              <view class="store_info"></view>
+              <view class="order_status">待取餐</view>
+            </view>
+          </view>
+          <view class="order_item">
+            <view class="store_wrap">
+              <view class="store_info"></view>
+              <view class="order_status">待取餐</view>
+            </view>
+          </view>
+          
+        </view>
+      </van-tab>
+      <van-tab title="待取餐">内容 3</van-tab>
+      <van-tab title="待评价">内容 4</van-tab>
+      <van-tab title="退款/取消">内容 4</van-tab>
+    </van-tabs>
+  </view>
+
+</view>
+
