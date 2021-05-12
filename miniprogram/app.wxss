@@ -12,3 +12,8 @@ view {
   justify-content: center;
   align-items: center;
 }
+.ellipsis{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

@@ -92,6 +92,49 @@
     </scroll-view>
   </view>
 
+  <!-- 推荐 -->
+  <view class="rec_section">
+    <view class="rec_head">
+      <van-dropdown-menu>
+        <van-dropdown-item value="{{ productOrder }}" options="{{ productOrderList }}" />
+        <van-dropdown-item value="{{ productSort }}" options="{{ productSortList }}" />
+      </van-dropdown-menu>
+    </view>
 
+    <view class="rec_content">
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
+        <view class="product_title ellipsis">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">满挺芳餐厅</text>
+        </view>
+      </view>
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://img0.baidu.com/it/u=3649211823,1942766548&fm=11&fmt=auto&gp=0.jpg"></image>
+        <view class="product_title ellipsis">肯德基汉堡简笔画德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">满挺芳餐厅</text>
+        </view>
+      </view>
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn09%2F266%2Fw640h426%2F20180619%2Fa931-heauxvz3809840.jpg&refer=http%3A%2F%2Fn.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623417679&t=d9f45cae6f26ea9bbebb75edb596fe94"></image>
+        <view class="product_title ellipsis">肯德基汉堡简笔画德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">满挺芳餐厅</text>
+        </view>
+      </view>
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://img1.baidu.com/it/u=3253115732,2825130522&fm=26&fmt=auto&gp=0.jpg"></image>
+        <view class="product_title ellipsis">肯德基汉堡简笔画德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">沁园春餐厅</text>
+        </view>
+      </view>
+    </view>
+  </view>
 
 </view>

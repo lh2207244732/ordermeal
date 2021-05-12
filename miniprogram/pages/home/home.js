@@ -16,6 +16,18 @@ Page({
         name: '沁园春',
         index: 1
       }
+    ],
+    productOrder: 'comprehensive',
+    productOrderList: [
+      { text: '综合排序', value: 'comprehensive' },
+      { text: '销量优先', value: 'sales' },
+    ],
+    productSort: 'all',
+    productSortList: [
+      { text: '全部', value: 'all' },
+      { text: '早餐', value: 'breakfast' },
+      { text: '午餐', value: 'lunch' },
+      { text: '晚餐', value: 'dinner' },
     ]
   },
 
