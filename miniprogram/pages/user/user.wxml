@@ -1,22 +1,78 @@
 <!--pages/user/user.wxml-->
-<view class="pag_user">
+<view class="page_user">
 	<!-- 用户信息面板 -->
-	<!-- <view class="user_info_wrap">
-		<image class="user_bg" src="{{userInfo.avatarUrl}}" ></image>
-		<view class="user_info" >
-			<image class="user_icon" src="{{userInfo.avatarUrl}}" ></image>
-			<view class="user_name"  >{{userInfo.nickName}}</view>
+	<view class="page_info">
+		<view wx:if="{{userInfo.nickName}}">
+			<van-card
+ 			 desc="{{userInfo.nickName}}"
+  			title="用户名"
+  			thumb="{{ userInfo.avatarUrl }}"
+			>
+			<view slot="footer">
+    			<van-button size="mini">退出</van-button>
+ 			</view>
+		</van-card>
+	</view>
+	<view wx:else class="login_btn" >  
+			<navigator 
+			url="/pages/login/login" 
+			hover-class="navigator-hover">
+				登录
+			</navigator>
+	</view>
+	</view>
+	<view class="user_content" >
+	<!-- 美食足迹 -->
+		<view class="history_wrap">
+			<navigator>
+				<view class="his_num">0</view>
+				<view class="his_name">收藏店铺</view>
+			</navigator>
+			<navigator>
+			<view class="his_num">0</view>
+			<view class="his_name">常吃美食</view>
+			</navigator>
+			<navigator>
+				<view class="his_num">0</view>
+				<view class="his_name">关注美食</view>
+			</navigator>
+			<navigator>
+				<view class="his_num">0</view>
+				<view class="his_name">我的足迹</view>
+			</navigator>
 		</view>
-	</view> -->
-	<van-card
-  desc="{{userInfo.nickName}}"
-  title="用户名"
-  thumb="{{ userInfo.avatarUrl }}"
->
-<view slot="footer">
-    <van-button size="mini">退出</van-button>
-  </view>
-</van-card>
-	<!-- <navigator 
-	url="/pages/login/login" hover-class="navigator-hover">登录</navigator> -->
+		<!-- 订单模块 -->
+		<view class="order_wrap">
+			<view class="order_title">我的订单</view>
+			<view class="order_content">
+				<navigator>
+					<view ><van-icon name="coupon-o" /></view>
+					<view class="order_name" >全部订单</view>
+				</navigator>
+				<navigator>
+					<view ><van-icon name="coupon-o" /></view>
+					<view class="order_name" >待处理订单</view>
+				</navigator>
+				<navigator>
+					<view ><van-icon name="coupon-o" /></view>
+					<view class="order_name" >已收货订单</view>
+				</navigator>
+				<navigator>
+					<view ><van-icon name="coupon-o" /></view>
+					<view class="order_name" >退款订单</view>
+				</navigator>
+			</view>
+		</view>
+		<!-- 地址处理 -->
+		<view class="address_wrap">
+			地址管理
+		</view>
+		<view class="serve_wrap">
+			联系客服
+		</view>
+		<view class="admin_wrap">
+			关于我们
+		</view>
 </view>
+</view>
+

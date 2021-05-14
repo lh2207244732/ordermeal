@@ -13,6 +13,7 @@ Page({
         const {userInfo}=res
         wx.setStorageSync('userInfo', userInfo)
         // 跳转到个人中心页面
+        console.log(111)
         wx.navigateBack({
           delta: 1,
         })
