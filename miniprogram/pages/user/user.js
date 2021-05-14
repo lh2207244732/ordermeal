@@ -7,6 +7,13 @@ Page({
   data: {
 	userInfo:{}
   },
+  handleLogout:function(){
+      // 退出操作，清除本地缓存的信息
+      wx.clearStorage()
+      //刷新当前页面
+      this.onShow()
+},
+
   /**
    * 生命周期函数--监听页面加载
    */

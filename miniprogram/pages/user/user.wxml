@@ -4,12 +4,12 @@
 	<view class="page_info">
 		<view wx:if="{{userInfo.nickName}}">
 			<van-card
- 			 desc="{{userInfo.nickName}}"
+ 			desc="{{userInfo.nickName}}"
   			title="用户名"
   			thumb="{{ userInfo.avatarUrl }}"
 			>
 			<view slot="footer">
-    			<van-button size="mini">退出</van-button>
+    			<van-button bindtap="handleLogout" size="mini">退出</van-button>
  			</view>
 		</van-card>
 	</view>
@@ -17,9 +17,15 @@
 			<navigator 
 			url="/pages/login/login" 
 			hover-class="navigator-hover">
-				登录
+			<van-image
+				round
+				width="10rem"
+				height="10rem"
+				src="https://img.yzcdn.cn/vant/cat.jpeg"
+				/>
 			</navigator>
 	</view>
+
 	</view>
 	<view class="user_content" >
 	<!-- 美食足迹 -->
