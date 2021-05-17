@@ -5,7 +5,8 @@
     "pages/order/order",
     "pages/user/user",
     "pages/search/search",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/productDetails/productDetails"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -61,6 +62,8 @@
     "van-empty": "@vant/weapp/empty/index",
     "van-card": "@vant/weapp/card/index",
     "van-divider": "@vant/weapp/divider/index",
-    "van-image": "@vant/weapp/image/index"
+    "van-image": "@vant/weapp/image/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
   }
 }
