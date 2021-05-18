@@ -13,7 +13,7 @@
   </view>
 
   <!-- 结果列表 -->
-  <view class="list_section">
+  <view class="list_section" wx:if="{{false}}">
     <view class="product_item">
       <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
       <view class="product_info">
@@ -114,5 +114,9 @@
       </view>
     </view>
 
+  </view>
+
+  <view class="list_none">
+    <van-empty description="什么也没有" image="search" />
   </view>
 </view>
