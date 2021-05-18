@@ -1,6 +1,6 @@
 .page{
   background-color: #eee;
-  height: 5000rpx;
+  padding-bottom: 100rpx;
 }
 .top_carousel_section{
   position: relative;
@@ -24,6 +24,18 @@ swiper {
   border-radius: 22rpx;
   color: #fefefe;
   font-size: 24rpx;
+}
+.back_btn_wrap{
+  position: fixed;
+  left: 40rpx;
+  z-index: 99;
+  width: 46rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: flex-end;
+}
+.back_icon{
+  font-size: 46rpx;
 }
 
 .price_wrapper_section{
@@ -71,10 +83,20 @@ swiper {
   -webkit-line-clamp: 2;    
   overflow: hidden;
 }
+.addCart_section{
+  margin-top: 14rpx;
+  display: flex;
+  justify-content: flex-end;
+}
 
 .product_attr_section{
   margin: 25rpx 18rpx;
-  padding: 22rpx 28rpx 32rpx;
+  padding: 22rpx 20rpx 32rpx;
   border-radius: 16rpx;
   background-color: #fff;
+}
+
+.shop_cart_icon{
+  font-size: 60rpx;
+  color: #939391;
 }

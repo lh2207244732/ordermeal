@@ -1,6 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
+    let _this = this
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -15,5 +16,11 @@ App({
     }
 
     this.globalData = {}
+
+    wx.getSystemInfo({
+      success: function (res) {
+        _this.globalData.statusBarHeight = res.statusBarHeight
+      }
+    })
   }
 })

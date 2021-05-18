@@ -14,6 +14,9 @@
       </block>
     </swiper>
     <view class="carousel_page_container flex_center">1/2</view>
+    <view class="back_btn_wrap" style="top:{{statusBarHeight}}rpx">
+      <van-icon name="arrow-left" class="back_icon" />
+    </view>
   </view>
 
   <!-- 价格标题部分 -->
@@ -33,6 +36,11 @@
 
     <!-- 标题 -->
     <view class="title_wrapper">高端牛仔裤男士夏季薄款宽松直筒潮流百搭长裤子浅色修身休闲裤kz百搭长裤子浅色修身休闲裤kz百搭长裤子浅色修身休闲裤kz</view>
+
+    <!-- 添加购物车按钮 -->
+    <view class="addCart_section">
+      <van-button type="warning" round size="small">加入购物车</van-button>
+    </view>
   </view>
 
   <!-- 商品属性部分 -->
@@ -44,10 +52,20 @@
             <van-cell size="large" title="掌柜描述" label="大骨头熬汤麻辣口味脆皮香肠+千页豆腐+冬瓜+土豆+海带+豆腐皮" />
             <van-cell size="large" title="主料" label="千页豆腐" border="{{ false }}" />
             <van-cell size="large" title="分量" label="1人份" />
+            <van-cell size="large" title="分类" label="早餐" />
             <van-cell size="large" title="价格说明" label="商品的实时标价，不因表述的差异改变性质。具体成交价格根据商品参加活动，或会员使用优惠券、积分等发生变化，最终以订单结算页价格为准。" />
           </van-cell-group>
         </view>
       </van-tab>
     </van-tabs>
   </view>
+
+  <!-- 底部购物车栏 -->
+  <van-submit-bar
+    price="{{ 3050 }}"
+    button-text="提交订单"
+    bind:submit="onSubmit"
+  >
+    <van-icon name="cart-circle" class="shop_cart_icon" />
+  </van-submit-bar>
 </view>
