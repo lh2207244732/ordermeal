@@ -6,7 +6,8 @@
     "pages/user/user",
     "pages/search/search",
     "pages/login/login",
-    "pages/productDetails/productDetails"
+    "pages/productDetails/productDetails",
+    "pages/storeDetails/storeDetails"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -66,6 +67,7 @@
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-submit-bar": "@vant/weapp/submit-bar/index",
-    "van-tag": "@vant/weapp/tag/index"
+    "van-tag": "@vant/weapp/tag/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index"
   }
 }

@@ -1,19 +1,30 @@
 <view class="page">
 
-  <!-- 搜索框 -->
-  <view class="search_ipt_section">
-    <van-search
-      shape="round"
-      show-action
-      background="#19b5fe"
-      placeholder="请输入搜索关键词"
-      bind:search="onSearch"
-      bind:cancel="onCancel"
+  <!-- 顶部头像 -->
+  <view class="store_bg">
+    <image class="store_img" mode="widthFix" src="../../static/store_img/store_bg.jpg"></image>
+    <view class="store_avatar_wrap">
+      <image class="store_avatar" mode="aspectFill" src="https://img2.baidu.com/it/u=806680654,2055993577&fm=26&fmt=auto&gp=0.jpg"></image>
+      <text class="store_name_txt">德克士旗舰店（六一路店）</text>
+    </view>
+  </view>
+
+  <!-- 通知栏 -->
+  <view class="notice_section">
+    <van-notice-bar
+      left-icon="volume-o"
+      color="#1989fa"
+      background="#ecf9ff"
+      speed="40"
+      text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
     />
   </view>
 
-  <!-- 结果列表 -->
-  <view class="list_section" wx:if="{{true}}">
+  <view class="list_head">
+    <van-tag type="primary" mark size="large">老板推荐</van-tag>
+  </view>
+
+  <view class="product_list">
     <view class="product_item">
       <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
       <view class="product_info">
@@ -38,10 +49,10 @@
           <!-- 餐厅 -->
           <view class="product_address">
             <view class="store_name_wrap">
-              <text class="store_name">德克士旗舰店</text>
+              <text class="store_name">商品详情</text>
               <van-icon name="arrow" />
             </view>
-            <van-tag type="primary">满庭芳</van-tag>
+            <van-tag type="warning" size="medium">加购物车</van-tag>
           </view>
         </view>
       </view>
@@ -80,7 +91,6 @@
       </view>
     </view>
 
-
     <view class="product_item">
       <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
       <view class="product_info">
@@ -113,10 +123,17 @@
         </view>
       </view>
     </view>
+
 
   </view>
 
-  <view class="list_none" wx:if="{{false}}">
-    <van-empty description="什么也没有" image="search" />
-  </view>
+  <!-- 底部购物车栏 -->
+  <van-submit-bar
+    price="{{ 3050 }}"
+    button-text="提交订单"
+    bind:submit="onSubmit"
+  >
+    <van-icon name="cart-circle" class="shop_cart_icon" />
+  </van-submit-bar>
+
 </view>
