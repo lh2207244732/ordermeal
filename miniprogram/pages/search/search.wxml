@@ -1,2 +1,118 @@
-<!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+<view class="page">
+
+  <!-- 搜索框 -->
+  <view class="search_ipt_section">
+    <van-search
+      shape="round"
+      show-action
+      background="#19b5fe"
+      placeholder="请输入搜索关键词"
+      bind:search="onSearch"
+      bind:cancel="onCancel"
+    />
+  </view>
+
+  <!-- 结果列表 -->
+  <view class="list_section">
+    <view class="product_item">
+      <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
+      <view class="product_info">
+
+        <!-- 商品标题 -->
+        <view class="product_title ellipsis2">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+
+        <view class="product_information">
+          <!-- 价格 -->
+          <view class="product_price">
+            <view class="price_wrap">
+              <text class="price_icon">￥</text>
+              <text class="price_num">219</text>
+            </view>
+
+            <view class="sales_wrap">
+              <text class="sales_txt">月售</text>
+              <text class="sales_num">2311</text>
+            </view>
+          </view>
+
+          <!-- 餐厅 -->
+          <view class="product_address">
+            <view class="store_name_wrap">
+              <text class="store_name">德克士旗舰店</text>
+              <van-icon name="arrow" />
+            </view>
+            <van-tag type="primary">满庭芳</van-tag>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="product_item">
+      <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
+      <view class="product_info">
+
+        <!-- 商品标题 -->
+        <view class="product_title ellipsis2">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+
+        <view class="product_information">
+          <!-- 价格 -->
+          <view class="product_price">
+            <view class="price_wrap">
+              <text class="price_icon">￥</text>
+              <text class="price_num">219</text>
+            </view>
+
+            <view class="sales_wrap">
+              <text class="sales_txt">月售</text>
+              <text class="sales_num">2311</text>
+            </view>
+          </view>
+
+          <!-- 餐厅 -->
+          <view class="product_address">
+            <view class="store_name_wrap">
+              <text class="store_name">德克士旗舰店</text>
+              <van-icon name="arrow" />
+            </view>
+            <van-tag type="primary">满庭芳</van-tag>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="product_item">
+      <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
+      <view class="product_info">
+
+        <!-- 商品标题 -->
+        <view class="product_title ellipsis2">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+
+        <view class="product_information">
+          <!-- 价格 -->
+          <view class="product_price">
+            <view class="price_wrap">
+              <text class="price_icon">￥</text>
+              <text class="price_num">219</text>
+            </view>
+
+            <view class="sales_wrap">
+              <text class="sales_txt">月售</text>
+              <text class="sales_num">2311</text>
+            </view>
+          </view>
+
+          <!-- 餐厅 -->
+          <view class="product_address">
+            <view class="store_name_wrap">
+              <text class="store_name">德克士旗舰店</text>
+              <van-icon name="arrow" />
+            </view>
+            <van-tag type="primary">满庭芳</van-tag>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>
