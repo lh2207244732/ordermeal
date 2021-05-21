@@ -5,7 +5,8 @@
     "pages/user/user",
     "pages/search/search",
     "pages/productDetails/productDetails",
-    "pages/storeDetails/storeDetails"
+    "pages/storeDetails/storeDetails",
+    "pages/registerStore/registerStore"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -61,6 +62,8 @@
     "van-tag": "@vant/weapp/tag/index",
     "van-notice-bar": "@vant/weapp/notice-bar/index",
     "van-image": "@vant/weapp/image/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-uploader": "@vant/weapp/uploader/index"
   }
 }

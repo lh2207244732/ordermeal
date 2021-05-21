@@ -1,0 +1,39 @@
+.title{
+  height: 200rpx;
+  font-size: 38rpx;
+}
+
+.form_section{
+  padding-left: 36rpx;
+  padding-right: 36rpx;
+}
+.form_item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #ddd;
+  margin: 10rpx 0;
+  min-height: 100rpx;
+}
+
+.box_wrap{
+  display: flex;
+  align-items: center;
+}
+.form_item_label{
+  font-size: 30rpx;
+  color: #333;
+}
+.room_txt{
+  font-size: 28rpx;
+  color: #888;
+}
+.arrow_icon{
+  font-size: 34rpx;
+  color: #888;
+  margin-left: 12rpx;
+}
+
+.submit_section{
+  padding: 90rpx 30rpx 0;
+}

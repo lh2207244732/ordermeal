@@ -1,6 +1,7 @@
 // pages/user/user.js
-// import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 const app = getApp()
+const db = wx.cloud.database()
+
 const { Toast } = app.globalData
 const { saveUserInfo,deleteStorage,isLogin } = require('../../utils/index.js') 
 
@@ -10,30 +11,48 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    userInfo: {
+      cost: '-',
+      orders: '-'
+    }
   },
   
   //登录
   async handleLogin() {
     let _this = this
 
+    Toast.loading({
+      message: '登录中...',
+      duration: 0,
+      forbidClick: true,
+    });
+
     //获取用户账号信息
     const userInfo = await wx.getUserProfile({desc: '用户登录授权'})
-    // console.log('userInfo::', userInfo.userInfo);
     const { avatarUrl,gender,nickName } = userInfo.userInfo
-
+    
     //获取openid
     const loginRes = await wx.cloud.callFunction({name:'login',data:{}})
-    console.log('loginRes::', loginRes.result);
-    const { openid } = loginRes.result
+    const { openid,isMember } = loginRes.result
 
-    //存储用户信息
-    _this.updateUserInfo({
-      avatarUrl,
-      gender,
-      nickName,
-      openid
-    })
+    if (!isMember) {//未注册
+      //调用云函数注册用户
+      const addUserRes = await wx.cloud.callFunction({
+        name: 'addUser',
+        data: {
+          avatarUrl,
+          gender,
+          nickName,
+          openid
+        }
+      })
+      //存储用户信息
+      _this.updateUserInfo(addUserRes.result.user)
+    } else {//查询用户信息
+      const userRes = await db.collection('order_user').where({ openid }).get()
+      //存储用户信息
+      _this.updateUserInfo(userRes.data[0])
+    }
   },
 
   //存储用户信息
@@ -54,11 +73,29 @@ Page({
     Toast.success('退出成功');
   },
 
-  //
+  //未登录点击事件
   handleNoLogin() {
     if (!isLogin()) {
       Toast.fail('暂未登录');
     }
+  },
+
+  //点击我的店铺
+  async handleOpenStore() {
+    let _this = this
+
+    //查询店铺
+    const storeRes = await db.collection('om_store').where({
+      openid: _this.data.userInfo.openid
+    }).get()
+    if (!storeRes.data[0]) {
+      wx.navigateTo({
+        url:'/pages/registerStore/registerStore'
+      })
+    } else {
+
+    }
+
   },
 
   /**

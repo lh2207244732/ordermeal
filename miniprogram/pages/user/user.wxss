@@ -99,6 +99,9 @@
 .address_icon{
   color: #1989fa;
 }
+.store_icon{
+  color: #ea0198;
+}
 .logout_icon{
   color: #ee0a24;
 }

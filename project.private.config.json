@@ -39,6 +39,12 @@
         {
           "name": "我的页",
           "pathName": "pages/user/user",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "注册店铺",
+          "pathName": "pages/registerStore/registerStore",
           "scene": null
         }
       ]

@@ -27,13 +27,13 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
   const openid = wxContext.OPENID
 
+  //用户是否已注册
   let isMember = false
 
   const user = await db.collection('order_user').where({
     openid: openid
-  })
-  console.log('user::', user);
-  isMember = user ? true : false  
+  }).get()
+  isMember = user.data.length > 0 ? true : false  
 
   return {
     event,

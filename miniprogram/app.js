@@ -33,6 +33,7 @@ App({
 /*
 
 order_user 集合
+_id
 openid
 avatarUrl
 gender   1男  0女
@@ -41,6 +42,19 @@ role   'user' 'store'
 phone
 cost  消费额
 orders  订单量
+
+
+om_store  店铺集合
+_id
+logo
+name
+notice
+diningRoom
+productList
+openid
+sort
+address
+phone
 
 
 */

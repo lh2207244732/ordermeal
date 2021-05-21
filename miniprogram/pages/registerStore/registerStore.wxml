@@ -1,0 +1,59 @@
+<view class="page">
+
+  <view class="title flex_center">
+    快为店铺起个名，快速开店
+  </view>
+
+  <!-- 表单部分 -->
+  <view class="form_section">
+    <view class="form_item">
+      <view class="box_wrap">
+        <text class="form_item_label">店铺名称</text>
+        <van-field
+          model:value="{{ name }}"
+          placeholder="建议12字以内"
+          border="{{ false }}"
+        />
+      </view>
+    </view>
+
+    <view class="form_item">
+      <text class="form_item_label">店铺LOGO</text>
+      <view class="box_wrap">
+        <van-uploader 
+          file-list="{{ fileList }}"
+          max-count="1"
+          deletable="{{ true }}"
+          accept="image"
+          preview-full-image
+          bind:after-read="handleUploaded" 
+          bind:delete="handleDeleteLogo"
+        />
+        <van-icon name="arrow" class="arrow_icon" />
+      </view>
+    </view>
+
+    <view class="form_item" bindtap="handleChangeRoom">
+      <text class="form_item_label">所属餐厅</text>
+      <view class="box_wrap">
+        <text class="room_txt">{{ diningRoom[actionSheetActiveIndex].name }}</text>
+        <van-icon name="arrow" class="arrow_icon" />
+      </view>
+    </view>
+  </view>
+
+  <!-- 上拉动作面板 -->
+  <van-action-sheet
+    show="{{ ActionSheetShow }}"
+    actions="{{ diningRoom }}"
+    title="选择餐厅"
+    cancel-text="取消"
+    bind:close="onRoomClose"
+    bind:cancel="onRoomClose"
+    bind:select="onSelect"
+  />
+
+  <view class="submit_section">
+    <van-button type="info" round  block bindtap="submitForm">完成</van-button>
+  </view>
+</view>

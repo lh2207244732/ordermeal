@@ -44,7 +44,8 @@
   },
   "appid": "wx467218d9637de124",
   "projectname": "ordermeal",
-  "libVersion": "2.14.1",
+  "libVersion": "2.16.1",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
       "list": []

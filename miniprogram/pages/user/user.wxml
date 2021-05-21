@@ -15,11 +15,11 @@
 					<text class="nickname">{{ userInfo.nickName }}</text>
 					<view class="phone_wrap">
 						<text class="label_txt">手机号：</text>
-						<text class="phone">1685672346</text>
+						<text class="phone">{{ userInfo.phone }}</text>
 					</view>
 					<view class="role_wrap">
 						<text class="label_txt">身份：</text>
-						<van-tag type="primary">用户</van-tag>
+						<van-tag type="primary">{{ userInfo.role == 'user' ? '用户':'商家' }}</van-tag>
 					</view>
 				</block>
 
@@ -39,12 +39,12 @@
 	<!-- 信息栏 -->
 	<view class="count_info_section white_card">
 		<view class="count_info_item">
-			<text class="count_num">1200</text>
+			<text class="count_num">{{ userInfo.cost }}</text>
 			<text class="count_name">消费额</text>
 		</view>
 
 		<view class="count_info_item">
-			<text class="count_num">16</text>
+			<text class="count_num">{{ userInfo.orders }}</text>
 			<text class="count_name">订单量</text>
 		</view>
 
@@ -82,9 +82,17 @@
 	</view>
 
 	<!-- 注销登录 -->
-	<view class="logout_section white_card" bindtap="handleLogout">
+	<view class="logout_section white_card">
 		<van-cell-group border="{{false}}">
-			<van-cell is-link border="{{false}}">
+
+			<van-cell is-link wx:if="{{ userInfo.role == 'store'}}" bindtap="handleOpenStore">
+				<view slot="title" class="cell_slot">
+					<van-icon name="shop-o" class="store_icon cell_icon" />
+					<text class="van_cell_text">我的店铺</text>
+				</view>
+			</van-cell>
+
+			<van-cell is-link border="{{false}}" bindtap="handleLogout">
 				<view slot="title" class="cell_slot">
 					<van-icon name="circle" class="logout_icon cell_icon" />
 					<text class="van_cell_text">退出登录</text>
