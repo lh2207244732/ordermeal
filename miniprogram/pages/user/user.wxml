@@ -1,84 +1,100 @@
-<!--pages/user/user.wxml-->
-<view class="page_user">
-	<!-- 用户信息面板 -->
-	<view class="page_info">
-		<view wx:if="{{userInfo.nickName}}">
-			<van-card
- 			desc="{{userInfo.nickName}}"
-  			title="用户名"
-  			thumb="{{ userInfo.avatarUrl }}"
-			>
-			<view slot="footer">
-    			<van-button bindtap="handleLogout" size="mini">退出</van-button>
- 			</view>
-		</van-card>
-	</view>
-	<view wx:else class="login_btn" >  
-			<navigator 
-			url="/pages/login/login" 
-			hover-class="navigator-hover">
-			<van-image
-				round
-				width="10rem"
-				height="10rem"
-				src="https://img.yzcdn.cn/vant/cat.jpeg"
-				/>
-			</navigator>
-	</view>
+<view class="page">
 
-	</view>
-	<view class="user_content" >
-	<!-- 美食足迹 -->
-		<view class="history_wrap">
-			<navigator>
-				<view class="his_num">0</view>
-				<view class="his_name">收藏店铺</view>
-			</navigator>
-			<navigator>
-			<view class="his_num">0</view>
-			<view class="his_name">常吃美食</view>
-			</navigator>
-			<navigator>
-				<view class="his_num">0</view>
-				<view class="his_name">关注美食</view>
-			</navigator>
-			<navigator>
-				<view class="his_num">0</view>
-				<view class="his_name">我的足迹</view>
-			</navigator>
-		</view>
-		<!-- 订单模块 -->
-		<view class="order_wrap">
-			<view class="order_title">我的订单</view>
-			<view class="order_content">
-				<navigator>
-					<view ><van-icon name="coupon-o" /></view>
-					<view class="order_name" >全部订单</view>
-				</navigator>
-				<navigator>
-					<view ><van-icon name="coupon-o" /></view>
-					<view class="order_name" >待处理订单</view>
-				</navigator>
-				<navigator>
-					<view ><van-icon name="coupon-o" /></view>
-					<view class="order_name" >已收货订单</view>
-				</navigator>
-				<navigator>
-					<view ><van-icon name="coupon-o" /></view>
-					<view class="order_name" >退款订单</view>
-				</navigator>
+	<!-- 用户头像信息 -->
+	<view class="user_info_section white_card" bindtap="handleLogin">
+
+		<!-- 头像信息 -->
+		<view class="user_msg_wrap">
+			<!-- 头像部分 -->
+			<view class="user_avatar_wrap">
+				<van-image width="120rpx" height="120rpx" round lazy-load fit="cover" src="{{ userInfo.avatarUrl }}" />
+			</view>
+			<!-- 信息部分 -->
+			<view class="user_info_wrap">
+				<block wx:if="{{ userInfo.openid }}">
+					<text class="nickname">{{ userInfo.nickName }}</text>
+					<view class="phone_wrap">
+						<text class="label_txt">手机号：</text>
+						<text class="phone">1685672346</text>
+					</view>
+					<view class="role_wrap">
+						<text class="label_txt">身份：</text>
+						<van-tag type="primary">用户</van-tag>
+					</view>
+				</block>
+
+				<block wx:else>
+					<text class="no_login">暂未登录，点击登录</text>
+				</block>
 			</view>
 		</view>
-		<!-- 地址处理 -->
-		<view class="address_wrap">
-			地址管理
-		</view>
-		<view class="serve_wrap">
-			联系客服
-		</view>
-		<view class="admin_wrap">
-			关于我们
-		</view>
-</view>
-</view>
 
+		<!-- 设置部分 -->
+		<view class="setting_wrap" wx:if="{{ userInfo.openid }}">
+			<van-icon name="setting-o" class="setting_icon" />
+		</view>
+
+	</view>
+
+	<!-- 信息栏 -->
+	<view class="count_info_section white_card">
+		<view class="count_info_item">
+			<text class="count_num">1200</text>
+			<text class="count_name">消费额</text>
+		</view>
+
+		<view class="count_info_item">
+			<text class="count_num">16</text>
+			<text class="count_name">订单量</text>
+		</view>
+
+		<view class="count_info_item">
+			<text class="count_num">98</text>
+			<text class="count_name">收藏夹</text>
+		</view>
+	</view>
+
+	<!-- 功能栏 -->
+	<view class="func_section white_card" bindtap="handleNoLogin">
+		<van-cell-group border="{{false}}">
+			<van-cell is-link>
+				<view slot="title" class="cell_slot">
+					<van-icon name="friends-o" class="friends_icon cell_icon" />
+					<text class="van_cell_text">账号信息</text>
+				</view>
+			</van-cell>
+
+			<van-cell is-link>
+				<view slot="title" class="cell_slot">
+					<van-icon name="clock-o" class="history_icon cell_icon" />
+					<text class="van_cell_text">我的足迹</text>
+				</view>
+			</van-cell>
+
+			<van-cell is-link border="{{false}}">
+				<view slot="title" class="cell_slot">
+					<van-icon name="location-o" class="address_icon cell_icon" />
+					<text class="van_cell_text">收货地址</text>
+				</view>
+			</van-cell>
+
+		</van-cell-group>
+	</view>
+
+	<!-- 注销登录 -->
+	<view class="logout_section white_card" bindtap="handleLogout">
+		<van-cell-group border="{{false}}">
+			<van-cell is-link border="{{false}}">
+				<view slot="title" class="cell_slot">
+					<van-icon name="circle" class="logout_icon cell_icon" />
+					<text class="van_cell_text">退出登录</text>
+				</view>
+			</van-cell>
+		</van-cell-group>
+		
+	</view>
+
+	<!-- 轻提示节点 -->
+	<van-toast id="van-toast" />
+
+</view>

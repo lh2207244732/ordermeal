@@ -1,4 +1,6 @@
 //app.js
+import Toast from './miniprogram_npm/@vant/weapp/toast/toast';
+
 App({
   onLaunch: function () {
     let _this = this
@@ -19,8 +21,26 @@ App({
 
     wx.getSystemInfo({
       success: function (res) {
-        _this.globalData.statusBarHeight = res.statusBarHeight
+        _this.globalData = {
+          statusBarHeight: res.statusBarHeight,
+          Toast: Toast
+        }
       }
     })
   }
 })
+
+/*
+
+order_user 集合
+openid
+avatarUrl
+gender   1男  0女
+nickName
+role   'user' 'store'
+phone
+cost  消费额
+orders  订单量
+
+
+*/

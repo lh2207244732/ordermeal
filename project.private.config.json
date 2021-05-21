@@ -29,6 +29,17 @@
           "pathName": "pages/search/search",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "商品详情",
+          "pathName": "pages/productDetails/productDetails",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的页",
+          "pathName": "pages/user/user",
+          "scene": null
         }
       ]
     }

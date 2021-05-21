@@ -1,18 +1,65 @@
 // pages/user/user.js
+// import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
+const app = getApp()
+const { Toast } = app.globalData
+const { saveUserInfo,deleteStorage,isLogin } = require('../../utils/index.js') 
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-	userInfo:{}
+    userInfo: {}
   },
-  handleLogout:function(){
-      // 退出操作，清除本地缓存的信息
-      wx.clearStorage()
-      //刷新当前页面
-      this.onShow()
-},
+  
+  //登录
+  async handleLogin() {
+    let _this = this
+
+    //获取用户账号信息
+    const userInfo = await wx.getUserProfile({desc: '用户登录授权'})
+    // console.log('userInfo::', userInfo.userInfo);
+    const { avatarUrl,gender,nickName } = userInfo.userInfo
+
+    //获取openid
+    const loginRes = await wx.cloud.callFunction({name:'login',data:{}})
+    console.log('loginRes::', loginRes.result);
+    const { openid } = loginRes.result
+
+    //存储用户信息
+    _this.updateUserInfo({
+      avatarUrl,
+      gender,
+      nickName,
+      openid
+    })
+  },
+
+  //存储用户信息
+  updateUserInfo(userInfo) {
+    saveUserInfo(userInfo)
+    this.setData({
+      userInfo
+    })
+    Toast.success('登录成功');
+  },
+
+  //注销
+  handleLogout() {
+    deleteStorage('userInfo')
+    this.setData({
+      userInfo: {}
+    })
+    Toast.success('退出成功');
+  },
+
+  //
+  handleNoLogin() {
+    if (!isLogin()) {
+      Toast.fail('暂未登录');
+    }
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -32,8 +79,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const userInfo=wx.getStorageSync('userInfo')
-    this.setData({userInfo})
+    
   },
 
   /**

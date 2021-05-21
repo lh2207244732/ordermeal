@@ -1,11 +1,9 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/trends/trends",
     "pages/order/order",
     "pages/user/user",
     "pages/search/search",
-    "pages/login/login",
     "pages/productDetails/productDetails",
     "pages/storeDetails/storeDetails"
   ],
@@ -26,12 +24,6 @@
         "iconPath": "static/tabbar/home.png",
         "selectedIconPath": "static/tabbar/home_active.png"
       }, 
-      {
-        "pagePath": "pages/trends/trends",
-        "text": "动态",
-        "iconPath": "static/tabbar/trends.png",
-        "selectedIconPath": "static/tabbar/trends_active.png"
-      },
       {
         "pagePath": "pages/order/order",
         "text": "订单",
@@ -63,11 +55,12 @@
     "van-empty": "@vant/weapp/empty/index",
     "van-card": "@vant/weapp/card/index",
     "van-divider": "@vant/weapp/divider/index",
-    "van-image": "@vant/weapp/image/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
     "van-submit-bar": "@vant/weapp/submit-bar/index",
     "van-tag": "@vant/weapp/tag/index",
-    "van-notice-bar": "@vant/weapp/notice-bar/index"
+    "van-notice-bar": "@vant/weapp/notice-bar/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-toast": "@vant/weapp/toast/index"
   }
 }

@@ -1,6 +1,0 @@
-
-
-<van-button 
-plain hairline type="primary" 
-bindtap="getUserProfile"
->登录</van-button>
