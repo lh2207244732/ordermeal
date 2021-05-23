@@ -45,6 +45,12 @@
         {
           "name": "注册店铺",
           "pathName": "pages/registerStore/registerStore",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "店铺管理首页",
+          "pathName": "pages/storeManage/storeManage",
           "scene": null
         }
       ]

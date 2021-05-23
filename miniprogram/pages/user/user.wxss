@@ -3,14 +3,6 @@
   min-height: 100vh;
   padding-top: 50rpx;
 }
-.white_card{
-  background-color: #fff;
-  box-shadow: rgb(149 157 165 / 20%) 0px 1rpx 9rpx;
-  border-radius: 20rpx;
-  padding: 24rpx;
-  margin: 30rpx;
-  overflow: hidden;
-}
 
 .user_info_section{
   margin-top: 0;

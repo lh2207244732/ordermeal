@@ -1,6 +1,8 @@
-// pages/registerStore/registerStore.js
+const app = getApp()
+const db = wx.cloud.database()
+const { Toast } = app.globalData
 const { getStorage } = require('../../utils/index.js')
-const { uploadFile } = require('../../utils/asyncWx.js')
+const { uploadFile,deleteFile } = require('../../utils/asyncWx.js')
 Page({
 
   /**
@@ -23,20 +25,24 @@ Page({
     let _this = this
     const { file } = event.detail;
     let uploadRes = await uploadFile({
-      cloudPath: 'om_store/storeLogo_' + _this.data.userInfo.openid+'.png',
+      cloudPath: 'om_store/storeLogo_' + _this.data.userInfo.openid + Date.now() + '.png',
       filePath: file.url,
     })
     console.log(uploadRes.fileID);
     _this.setData({
       fileList: [{
-        name: 'store_logo',
+        name: 'store_logo' + Date.now(),
         url: uploadRes.fileID
       }]
     })
   },
 
   //删除图片
-  handleDeleteLogo(e) {
+  async handleDeleteLogo(e) {
+    let fileId = this.data.fileList[0].url
+    await deleteFile({
+      fileList: [fileId]
+    })
     this.setData({
       fileList:[]
     })
@@ -62,7 +68,39 @@ Page({
 
   //提交表单
   submitForm() {
-    console.log(123);
+    if (this.validateForm()) {
+      this.registerStore()
+    } else {
+      Toast.fail('请完善信息');
+    }
+  },
+  validateForm() {
+    let { name,fileList } = this.data
+    if (!name || fileList.length < 1) {
+      return false
+    }
+    return true
+  },
+
+
+  //处理注册店铺逻辑
+  async registerStore() {
+    let data = this.data
+    await db.collection('om_store').add({
+      data:{
+        name: data.name,
+        logoUrl: data.fileList[0].url,
+        diningRoom: data.diningRoom[data.actionSheetActiveIndex].name,
+        productList: [],
+        openid: data.userInfo.openid,
+        address:'',
+        phone: ''
+      }
+    })
+    Toast.success('注册成功');
+    wx.navigateTo({
+      url: '/pages/storeManage/storeManage?openid=' + data.userInfo.openid,
+    })
   },
   
 

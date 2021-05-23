@@ -32,7 +32,7 @@ App({
 
 /*
 
-order_user 集合
+om_user 集合
 _id
 openid
 avatarUrl
@@ -46,13 +46,12 @@ orders  订单量
 
 om_store  店铺集合
 _id
-logo
+logoUrl
 name
 notice
 diningRoom
 productList
 openid
-sort
 address
 phone
 

@@ -1,0 +1,57 @@
+<view class="page">
+
+  <!-- 主要信息部分 -->
+  <view class="info_section white_card">
+    <view class="user_wrap">
+      <view class="avatar_wrap">
+        <van-image width="120rpx" height="120rpx" round lazy-load fit="cover" src="{{ userInfo.avatarUrl }}" />
+        <text class="store_name ellipsis">小小店铺阿萨德阿打算达到啊</text>
+      </view>
+
+      <view class="diningRoom_wrap">
+        <van-tag color="#f2826a" mark size="medium">满挺芳餐厅</van-tag>
+      </view>
+    </view>
+
+    <!-- 统计数量部分 -->
+    <view class="counts_wrap">
+      <view class="count_item">
+        <text class="count_num">2354</text>
+        <text class="count_txt">收藏量</text>
+      </view>
+      <view class="count_item">
+        <text class="count_num">23</text>
+        <text class="count_txt">今日订单数</text>
+      </view>
+      <view class="count_item">
+        <text class="count_num">120</text>
+        <text class="count_txt">今日销售额</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能部分 -->
+  <view class="func_section white_card">
+    <view class="notice_wrap">
+      <van-notice-bar
+        left-icon="edit"
+        color="#1989fa"
+        background="#ecf9ff"
+        speed="40"
+        text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
+        bind:click="handleNoticeEdit"
+      />
+    </view>
+
+    <view class="func_list">
+      <view class="func_item" wx:for="{{ funcList }}" wx:key="name">
+        <view class="func_icon_wrap flex_center" style="background: {{item.background}}">
+          <van-icon name="{{ item.icon }}" class="func_icon" />
+        </view>
+        <text class="func_txt">{{ item.name }}</text>
+      </view>
+     
+    </view>
+  </view>
+
+</view>

@@ -6,7 +6,8 @@
     "pages/search/search",
     "pages/productDetails/productDetails",
     "pages/storeDetails/storeDetails",
-    "pages/registerStore/registerStore"
+    "pages/registerStore/registerStore",
+    "pages/storeManage/storeManage"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

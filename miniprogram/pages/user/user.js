@@ -3,7 +3,8 @@ const app = getApp()
 const db = wx.cloud.database()
 
 const { Toast } = app.globalData
-const { saveUserInfo,deleteStorage,isLogin } = require('../../utils/index.js') 
+const { saveUserInfo,getStorage,deleteStorage,isLogin } = require('../../utils/index.js')
+const { getUserProfile } = require('../../utils/asyncWx.js')
 
 Page({
 
@@ -23,12 +24,12 @@ Page({
 
     Toast.loading({
       message: '登录中...',
-      duration: 0,
+      duration: 10000,
       forbidClick: true,
     });
 
     //获取用户账号信息
-    const userInfo = await wx.getUserProfile({desc: '用户登录授权'})
+    const userInfo = await getUserProfile({desc: '用户登录授权'})
     const { avatarUrl,gender,nickName } = userInfo.userInfo
     
     //获取openid
@@ -49,7 +50,7 @@ Page({
       //存储用户信息
       _this.updateUserInfo(addUserRes.result.user)
     } else {//查询用户信息
-      const userRes = await db.collection('order_user').where({ openid }).get()
+      const userRes = await db.collection('om_user').where({ openid }).get()
       //存储用户信息
       _this.updateUserInfo(userRes.data[0])
     }
@@ -83,19 +84,19 @@ Page({
   //点击我的店铺
   async handleOpenStore() {
     let _this = this
-
+    const { openid } = _this.data.userInfo
     //查询店铺
-    const storeRes = await db.collection('om_store').where({
-      openid: _this.data.userInfo.openid
-    }).get()
-    if (!storeRes.data[0]) {
+    const storeRes = await db.collection('om_store').where({ openid }).get()
+    
+    if (!storeRes.data[0]) { //没查到走注册
       wx.navigateTo({
         url:'/pages/registerStore/registerStore'
       })
-    } else {
-
+    } else {//查到进入店铺管理
+      wx.navigateTo({
+        url: '/pages/storeManage/storeManage?openid=' + openid,
+      })
     }
-
   },
 
   /**
@@ -116,7 +117,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    //检测登录  查缓存中数据
+    //1. 如果有，无需再请求登录
+    const userInfo = getStorage('userInfo')
+    if (userInfo.openid) {
+      this.setData({
+        userInfo
+      })
+    }
   },
 
   /**

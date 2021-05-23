@@ -1,0 +1,84 @@
+.page {
+  background-color: #f6f6f6;
+  min-height: 100vh;
+  padding-top: 10rpx;
+}
+
+.white_card{
+  margin-left: 18rpx;
+  margin-right: 18rpx;
+}
+
+.user_wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.avatar_wrap{
+  display: flex;
+  align-items: center;
+}
+.store_name{
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #666;
+  margin-left: 14rpx;
+  max-width: 350rpx;
+}
+
+.diningRoom_wrap{
+  display: flex;
+  align-items: center;
+}
+
+.counts_wrap{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 18rpx;
+}
+.count_item{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.count_num{
+  color: #666;
+  font-size: 34rpx;
+}
+.count_txt{
+  color: #999;
+  font-size: 25rpx;
+  margin-top: 8rpx;
+}
+
+.func_list{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin-top: 30rpx;
+}
+.func_item{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 14rpx 18rpx;
+  background-color: pink;
+}
+.func_icon_wrap{
+  width: 74rpx;
+  height: 74rpx;
+  border-radius: 12rpx;
+  color: #fff;
+  box-shadow: rgb(149 157 165 / 20%) 0px 4rpx 9rpx;
+}
+.func_icon{
+  font-size: 48rpx;
+  font-weight: 700;
+}
+.func_txt{
+  font-size: 26rpx;
+  color: #888;
+  margin-top: 16rpx;
+}

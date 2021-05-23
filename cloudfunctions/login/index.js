@@ -30,7 +30,7 @@ exports.main = async (event, context) => {
   //用户是否已注册
   let isMember = false
 
-  const user = await db.collection('order_user').where({
+  const user = await db.collection('om_user').where({
     openid: openid
   }).get()
   isMember = user.data.length > 0 ? true : false  

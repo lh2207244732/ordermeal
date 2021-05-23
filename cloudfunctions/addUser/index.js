@@ -10,7 +10,7 @@ const db = cloud.database()
 
 exports.main = async (event, context) => {
   const { avatarUrl,gender,nickName,openid } = event
-  await db.collection('order_user').add({
+  await db.collection('om_user').add({
     data: {
       avatarUrl,
       gender,
@@ -22,7 +22,7 @@ exports.main = async (event, context) => {
       orders: 0
     }
   })
-  const user = await db.collection('order_user').where({ openid }).get()
+  const user = await db.collection('om_user').where({ openid }).get()
   return {
     user: user.data[0]
   }
