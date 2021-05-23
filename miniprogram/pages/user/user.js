@@ -1,7 +1,6 @@
 // pages/user/user.js
 const app = getApp()
 const db = wx.cloud.database()
-
 const { Toast } = app.globalData
 const { saveUserInfo,getStorage,deleteStorage,isLogin } = require('../../utils/index.js')
 const { getUserProfile } = require('../../utils/asyncWx.js')

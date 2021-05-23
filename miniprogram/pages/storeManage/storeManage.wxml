@@ -4,7 +4,7 @@
   <view class="info_section white_card">
     <view class="user_wrap">
       <view class="avatar_wrap">
-        <van-image width="120rpx" height="120rpx" round lazy-load fit="cover" src="{{ storeInfo.logoUrl }}" />
+        <van-image width="120rpx" height="120rpx" round fit="cover" src="{{ storeInfo.logoUrl }}" />
         <text class="store_name ellipsis">{{ storeInfo.name }}</text>
       </view>
 
@@ -37,8 +37,8 @@
         left-icon="volume-o"
         color="#1989fa"
         background="#ecf9ff"
-        speed="40"
-        text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
+        speed="30"
+        text="{{ storeInfo.notice }}"
       />
     </view>
 
@@ -66,19 +66,19 @@
   >
     <view class="action_sheet_node">
       <!-- 更改公告面板 -->
-      <block wx:if="{{false}}">
+      <block wx:if="{{activeIndex == 3}}">
         <van-field
-          model:value="{{ storeInfo.notice }}"
+          model:value="{{ newNoticeValue }}"
           label="公告"
           type="textarea"
           placeholder="请输入店铺公告"
           autosize
         />
-        <van-button block type="primary">完成</van-button>
+        <van-button block type="primary" bindtap="handleUpdateData">完成</van-button>
       </block>
 
       <!-- logo变更面板 -->
-      <block wx:if="{{false}}">
+      <block wx:if="{{activeIndex == 4}}">
         <van-uploader 
           file-list="{{ fileList }}"
           max-count="1"
@@ -92,28 +92,28 @@
       </block>
 
       <!-- 店名变更面板 -->
-      <block wx:if="{{false}}">
+      <block wx:if="{{activeIndex == 5}}">
         <van-field
-          model:value="{{ storeInfo.name }}"
+          model:value="{{ newNameValue }}"
           label="店铺名称"
           placeholder="请输入店铺名称"
         />
-        <van-button block type="primary">完成</van-button>
+        <van-button block type="primary" bindtap="handleUpdateData">完成</van-button>
       </block>
 
       <!-- 手机变更面板 -->
-      <block wx:if="{{false}}">
+      <block wx:if="{{activeIndex == 6}}">
         <van-field
-          model:value="{{ storeInfo.phone }}"
+          model:value="{{ newPhoneValue }}"
           type="number"
           label="店家手机号"
           placeholder="请输入手机号"
         />
-        <van-button block type="primary">完成</van-button>
+        <van-button block type="primary" bindtap="handleUpdateData">完成</van-button>
       </block>
 
       <!-- 编辑地址面板 -->
-      <block>
+      <block wx:if="{{activeIndex == 7}}">
         <van-picker 
           show-toolbar
           columns="{{ addressColumns }}" 
@@ -124,5 +124,8 @@
       
     </view>
   </van-action-sheet>
+
+  <!-- 轻提示节点 -->
+	<van-toast id="van-toast" />
 
 </view>
