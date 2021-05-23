@@ -51,6 +51,7 @@
         {
           "name": "店铺管理首页",
           "pathName": "pages/storeManage/storeManage",
+          "query": "openid=oClRs5AcDoSMeWXP3Qs77Qg5W__w",
           "scene": null
         }
       ]

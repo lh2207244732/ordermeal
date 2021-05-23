@@ -65,6 +65,7 @@
     "van-image": "@vant/weapp/image/index",
     "van-toast": "@vant/weapp/toast/index",
     "van-field": "@vant/weapp/field/index",
-    "van-uploader": "@vant/weapp/uploader/index"
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-picker": "@vant/weapp/picker/index"
   }
 }

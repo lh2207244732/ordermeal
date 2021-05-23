@@ -54,6 +54,8 @@ productList
 openid
 address
 phone
-
+orders  订单量
+sales 销售额
+collections  收藏量
 
 */

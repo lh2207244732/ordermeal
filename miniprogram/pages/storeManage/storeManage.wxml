@@ -4,28 +4,28 @@
   <view class="info_section white_card">
     <view class="user_wrap">
       <view class="avatar_wrap">
-        <van-image width="120rpx" height="120rpx" round lazy-load fit="cover" src="{{ userInfo.avatarUrl }}" />
-        <text class="store_name ellipsis">小小店铺阿萨德阿打算达到啊</text>
+        <van-image width="120rpx" height="120rpx" round lazy-load fit="cover" src="{{ storeInfo.logoUrl }}" />
+        <text class="store_name ellipsis">{{ storeInfo.name }}</text>
       </view>
 
       <view class="diningRoom_wrap">
-        <van-tag color="#f2826a" mark size="medium">满挺芳餐厅</van-tag>
+        <van-tag color="#f2826a" mark size="medium">{{ storeInfo.diningRoom }}</van-tag>
       </view>
     </view>
 
     <!-- 统计数量部分 -->
     <view class="counts_wrap">
       <view class="count_item">
-        <text class="count_num">2354</text>
+        <text class="count_num">{{ storeInfo.collection }}</text>
         <text class="count_txt">收藏量</text>
       </view>
       <view class="count_item">
-        <text class="count_num">23</text>
-        <text class="count_txt">今日订单数</text>
+        <text class="count_num">{{ storeInfo.orders }}</text>
+        <text class="count_txt">订单量</text>
       </view>
       <view class="count_item">
-        <text class="count_num">120</text>
-        <text class="count_txt">今日销售额</text>
+        <text class="count_num">{{ storeInfo.sales }}</text>
+        <text class="count_txt">销售额</text>
       </view>
     </view>
   </view>
@@ -34,17 +34,21 @@
   <view class="func_section white_card">
     <view class="notice_wrap">
       <van-notice-bar
-        left-icon="edit"
+        left-icon="volume-o"
         color="#1989fa"
         background="#ecf9ff"
         speed="40"
         text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
-        bind:click="handleNoticeEdit"
       />
     </view>
 
     <view class="func_list">
-      <view class="func_item" wx:for="{{ funcList }}" wx:key="name">
+      <view class="func_item" 
+        wx:for="{{ funcList }}" 
+        wx:key="name"
+        bindtap="itemClick"
+        data-index="{{index}}"
+      >
         <view class="func_icon_wrap flex_center" style="background: {{item.background}}">
           <van-icon name="{{ item.icon }}" class="func_icon" />
         </view>
@@ -53,5 +57,72 @@
      
     </view>
   </view>
+
+  <!-- 动作面板 -->
+  <van-action-sheet 
+    show="{{ actionSheetShow }}" 
+    title="{{ funcList[activeIndex].name }}"
+    bind:close="handleCloseActionSheet"
+  >
+    <view class="action_sheet_node">
+      <!-- 更改公告面板 -->
+      <block wx:if="{{false}}">
+        <van-field
+          model:value="{{ storeInfo.notice }}"
+          label="公告"
+          type="textarea"
+          placeholder="请输入店铺公告"
+          autosize
+        />
+        <van-button block type="primary">完成</van-button>
+      </block>
+
+      <!-- logo变更面板 -->
+      <block wx:if="{{false}}">
+        <van-uploader 
+          file-list="{{ fileList }}"
+          max-count="1"
+          deletable="{{ true }}"
+          accept="image"
+          preview-full-image
+          bind:after-read="handleUploaded" 
+          bind:delete="handleDeleteLogo"
+        />
+        <van-button block type="primary">完成</van-button>
+      </block>
+
+      <!-- 店名变更面板 -->
+      <block wx:if="{{false}}">
+        <van-field
+          model:value="{{ storeInfo.name }}"
+          label="店铺名称"
+          placeholder="请输入店铺名称"
+        />
+        <van-button block type="primary">完成</van-button>
+      </block>
+
+      <!-- 手机变更面板 -->
+      <block wx:if="{{false}}">
+        <van-field
+          model:value="{{ storeInfo.phone }}"
+          type="number"
+          label="店家手机号"
+          placeholder="请输入手机号"
+        />
+        <van-button block type="primary">完成</van-button>
+      </block>
+
+      <!-- 编辑地址面板 -->
+      <block>
+        <van-picker 
+          show-toolbar
+          columns="{{ addressColumns }}" 
+          bind:cancel="onAddressCancel"
+          bind:confirm="onAddressConfirm"
+        />
+      </block>
+      
+    </view>
+  </van-action-sheet>
 
 </view>

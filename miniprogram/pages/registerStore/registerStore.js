@@ -94,7 +94,11 @@ Page({
         productList: [],
         openid: data.userInfo.openid,
         address:'',
-        phone: ''
+        phone: '',
+        notice: '',
+        collection: 0,
+        orders: 0,
+        sales: 0
       }
     })
     Toast.success('注册成功');

@@ -59,17 +59,21 @@
   margin-top: 30rpx;
 }
 .func_item{
+  width: 160rpx;
+  height: 160rpx;
   display: flex;
   flex-flow: column wrap;
   justify-content: space-around;
   align-items: center;
-  padding: 14rpx 18rpx;
-  background-color: pink;
+  /* padding: 14rpx; */
+  /* background-color: pink; */
+  margin: 12rpx 8rpx;
+  margin-bottom: 0;
 }
 .func_icon_wrap{
-  width: 74rpx;
-  height: 74rpx;
-  border-radius: 12rpx;
+  width: 78rpx;
+  height: 78rpx;
+  border-radius: 14rpx;
   color: #fff;
   box-shadow: rgb(149 157 165 / 20%) 0px 4rpx 9rpx;
 }
@@ -81,4 +85,14 @@
   font-size: 26rpx;
   color: #888;
   margin-top: 16rpx;
+}
+
+/* 动作面板内容样式 */
+.action_sheet_node{
+  min-height: 500rpx;
+  padding: 30rpx;
+  text-align: center;
+}
+.van-button{
+  margin-top: 66rpx;
 }

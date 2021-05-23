@@ -51,7 +51,7 @@
           <van-cell-group>
             <van-cell size="large" title="掌柜描述" label="大骨头熬汤麻辣口味脆皮香肠+千页豆腐+冬瓜+土豆+海带+豆腐皮" />
             <van-cell size="large" title="主料" label="千页豆腐" border="{{ false }}" />
-            <van-cell size="large" title="分量" label="1人份" />
+            <van-cell size="large" title="份量" label="1人份" />
             <van-cell size="large" title="分类" label="早餐" />
             <van-cell size="large" title="价格说明" label="商品的实时标价，不因表述的差异改变性质。具体成交价格根据商品参加活动，或会员使用优惠券、积分等发生变化，最终以订单结算页价格为准。" />
           </van-cell-group>
