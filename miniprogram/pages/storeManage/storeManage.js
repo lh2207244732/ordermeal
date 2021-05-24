@@ -1,9 +1,8 @@
 const app = getApp()
 const db = wx.cloud.database()
 const { Toast } = app.globalData
-/*
-春节将至，提前祝各位亲友们新年快乐，本店将于2月10日放假，2月10日-2月20日期间下单的亲友们，将在2月21日开始发货，为此给您带来的不便请谅解。
-*/
+const { uploadFile,deleteFile } = require('../../utils/asyncWx.js')
+
 Page({
 
   /**
@@ -76,6 +75,7 @@ Page({
         values: ['1号窗口', '2号窗口', '3号窗口','4号窗口','5号窗口','6号窗口','7号窗口','8号窗口','9号窗口','10号窗口','11号窗口','12号窗口','13号窗口','14号窗口','15号窗口','16号窗口',]
       },
     ],
+    fileList: [],
     newNoticeValue: '',
     newLogoUrl: '',
     newNameValue: '',
@@ -85,11 +85,22 @@ Page({
 
   //功能区点击
   itemClick(e) {
+    let openid = this.data.storeInfo.openid
     let index = e.currentTarget.dataset.index
     if ([3,4,5,6,7].indexOf(index) != -1) {
       this.setData({
         activeIndex: index,
         actionSheetShow: true
+      })
+    }
+    if (index == 0) {
+      wx.navigateTo({
+        url: '/pages/publishProduct/publishProduct?storeid=' + openid,
+      })
+    }
+    if (index == 8) {
+      wx.navigateTo({
+        url: '/pages/storeDetails/storeDetails?storeid=' + openid,
       })
     }
   },
@@ -103,7 +114,7 @@ Page({
 
   //更新数据
   handleUpdateData() {
-    let { newNoticeValue,newNameValue,activeIndex,newPhoneValue,newAddressValue } = this.data
+    let { newNoticeValue,newNameValue,activeIndex,newPhoneValue,newAddressValue,fileList,storeInfo } = this.data
     switch(activeIndex) {
       case 3://修改公告
         if (!newNoticeValue) {
@@ -113,9 +124,16 @@ Page({
         this.requestUpdateData('om_store', { notice: newNoticeValue })
         break;
       case 4://logo
-        this.setData({
-          newLogoUrl: ''
+        if (fileList.length < 1) {
+          Toast.fail('还未上传');
+          return
+        }
+        //删除云存储中 旧图片
+        let fileId = storeInfo.logoUrl
+        deleteFile({
+          fileList: [fileId]
         })
+        this.requestUpdateData('om_store', { logoUrl: fileList[0].url })
         break;
       case 5://name店名
         if (!newNameValue) {
@@ -163,7 +181,7 @@ Page({
 
   //重置新值
   resetNewValue() {
-    const { activeIndex,newNoticeValue,newNameValue,newPhoneValue,newAddressValue } = this.data
+    const { activeIndex,newNoticeValue,newNameValue,newPhoneValue,newAddressValue,fileList } = this.data
     switch(activeIndex) {
       case 3:
         this.setData({
@@ -173,7 +191,8 @@ Page({
         break;
       case 4:
         this.setData({
-          newLogoUrl: ''
+          ['storeInfo.logoUrl']: fileList[0].url,
+          fileList: []
         })
         break;
       case 5:
@@ -195,6 +214,34 @@ Page({
         })
         break;
     }
+  },
+
+  //上传图片
+  async handleUploaded(event) {
+    let _this = this
+    const { file } = event.detail;
+    let uploadRes = await uploadFile({
+      cloudPath: 'om_store/storeLogo_' + _this.data.storeInfo.openid + Date.now() + '.png',
+      filePath: file.url,
+    })
+    console.log(uploadRes.fileID);
+    _this.setData({
+      fileList: [{
+        name: 'store_logo' + Date.now(),
+        url: uploadRes.fileID
+      }]
+    })
+  },
+
+  //删除图片
+  async handleDeleteLogo(e) {
+    let fileId = this.data.fileList[0].url
+    await deleteFile({
+      fileList: [fileId]
+    })
+    this.setData({
+      fileList:[]
+    })
   },
 
   //选择地址取消

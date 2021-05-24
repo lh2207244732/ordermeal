@@ -109,3 +109,14 @@
   font-size: 60rpx;
   color: #939391;
 }
+
+.store_detail_wrap{
+  background-color: #efefef;
+}
+.van-cell-group{
+  padding-top: 24rpx;
+}
+.store_detail_cell_right_icon{
+  font-size: 44rpx;
+  font-weight: 700;
+}

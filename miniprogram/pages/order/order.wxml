@@ -2,7 +2,7 @@
 
   <!-- 顶部tab -->
   <view class="top_tab_wrap">
-    <van-tabs>
+    <van-tabs animated>
       <van-tab title="全部">
         <van-empty description="暂无订单" />
       </van-tab>

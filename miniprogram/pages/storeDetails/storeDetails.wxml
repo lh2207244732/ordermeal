@@ -4,135 +4,156 @@
   <view class="store_bg">
     <image class="store_img" mode="widthFix" src="../../static/store_img/store_bg.jpg"></image>
     <view class="store_avatar_wrap">
-      <image class="store_avatar" mode="aspectFill" src="https://img2.baidu.com/it/u=806680654,2055993577&fm=26&fmt=auto&gp=0.jpg"></image>
-      <text class="store_name_txt">德克士旗舰店（六一路店）</text>
+      <image class="store_avatar" mode="aspectFill"
+        src="{{ storeInfo.logoUrl }}"></image>
+      <text class="store_name_txt">{{ storeInfo.name }}（{{storeInfo.diningRoom}}）</text>
     </view>
   </view>
 
   <!-- 通知栏 -->
   <view class="notice_section">
-    <van-notice-bar
-      left-icon="volume-o"
-      color="#1989fa"
-      background="#ecf9ff"
-      speed="40"
-      text="在代码阅读过程中人们说脏话的频率是衡量代码质量的唯一标准。"
-    />
+    <van-notice-bar left-icon="volume-o" color="#1989fa" background="#ecf9ff" speed="10"
+      text="{{storeInfo.notice}}" />
   </view>
 
-  <view class="list_head">
-    <van-tag type="primary" mark size="large">老板推荐</van-tag>
-  </view>
+  <van-tabs animated color="#ee0a24">
+    <van-tab title="点餐">
+      <view class="meal_wrap">
+        <view class="list_head">
+          <van-tag type="primary" mark size="large">老板推荐</van-tag>
+        </view>
+        <view class="product_list">
+          <view class="product_item">
+            <image class="product_main_img" mode="aspectFill"
+              src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885">
+            </image>
+            <view class="product_info">
 
-  <view class="product_list">
-    <view class="product_item">
-      <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
-      <view class="product_info">
+              <!-- 商品标题 -->
+              <view class="product_title ellipsis2">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
 
-        <!-- 商品标题 -->
-        <view class="product_title ellipsis2">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+              <view class="product_information">
+                <!-- 价格 -->
+                <view class="product_price">
+                  <view class="price_wrap">
+                    <text class="price_icon">￥</text>
+                    <text class="price_num">219</text>
+                  </view>
 
-        <view class="product_information">
-          <!-- 价格 -->
-          <view class="product_price">
-            <view class="price_wrap">
-              <text class="price_icon">￥</text>
-              <text class="price_num">219</text>
-            </view>
+                  <view class="sales_wrap">
+                    <text class="sales_txt">月售</text>
+                    <text class="sales_num">2311</text>
+                  </view>
+                </view>
 
-            <view class="sales_wrap">
-              <text class="sales_txt">月售</text>
-              <text class="sales_num">2311</text>
+                <!-- 餐厅 -->
+                <view class="product_address">
+                  <view class="store_name_wrap">
+                    <text class="store_name">商品详情</text>
+                    <van-icon name="arrow" />
+                  </view>
+                  <van-tag type="warning" size="medium">加购物车</van-tag>
+                </view>
+              </view>
             </view>
           </view>
 
-          <!-- 餐厅 -->
-          <view class="product_address">
-            <view class="store_name_wrap">
-              <text class="store_name">商品详情</text>
-              <van-icon name="arrow" />
+          <view class="product_item">
+            <image class="product_main_img" mode="aspectFill"
+              src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885">
+            </image>
+            <view class="product_info">
+
+              <!-- 商品标题 -->
+              <view class="product_title ellipsis2">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+
+              <view class="product_information">
+                <!-- 价格 -->
+                <view class="product_price">
+                  <view class="price_wrap">
+                    <text class="price_icon">￥</text>
+                    <text class="price_num">219</text>
+                  </view>
+
+                  <view class="sales_wrap">
+                    <text class="sales_txt">月售</text>
+                    <text class="sales_num">2311</text>
+                  </view>
+                </view>
+
+                <!-- 餐厅 -->
+                <view class="product_address">
+                  <view class="store_name_wrap">
+                    <text class="store_name">德克士旗舰店</text>
+                    <van-icon name="arrow" />
+                  </view>
+                  <van-tag type="primary">满庭芳</van-tag>
+                </view>
+              </view>
             </view>
-            <van-tag type="warning" size="medium">加购物车</van-tag>
+          </view>
+
+          <view class="product_item">
+            <image class="product_main_img" mode="aspectFill"
+              src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885">
+            </image>
+            <view class="product_info">
+
+              <!-- 商品标题 -->
+              <view class="product_title ellipsis2">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+
+              <view class="product_information">
+                <!-- 价格 -->
+                <view class="product_price">
+                  <view class="price_wrap">
+                    <text class="price_icon">￥</text>
+                    <text class="price_num">219</text>
+                  </view>
+
+                  <view class="sales_wrap">
+                    <text class="sales_txt">月售</text>
+                    <text class="sales_num">2311</text>
+                  </view>
+                </view>
+
+                <!-- 餐厅 -->
+                <view class="product_address">
+                  <view class="store_name_wrap">
+                    <text class="store_name">德克士旗舰店</text>
+                    <van-icon name="arrow" />
+                  </view>
+                  <van-tag type="primary">满庭芳</van-tag>
+                </view>
+              </view>
+            </view>
           </view>
         </view>
       </view>
-    </view>
+    </van-tab>
+    <van-tab title="商家">
+      <view class="store_detail_wrap">
+        <van-cell-group border="{{ false }}">
+          <van-cell icon="location-o" title="地址" label="{{storeInfo.address}}" />
+          <van-cell icon="phone-o" title="手机号" center label="{{storeInfo.phone}}" border="{{ false }}">
+            <van-icon name="phone-o" slot="right-icon" class="store_detail_cell_right_icon" bindtap="makePhoneCall" />
+          </van-cell>
+        </van-cell-group>
 
-    <view class="product_item">
-      <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
-      <view class="product_info">
-
-        <!-- 商品标题 -->
-        <view class="product_title ellipsis2">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
-
-        <view class="product_information">
-          <!-- 价格 -->
-          <view class="product_price">
-            <view class="price_wrap">
-              <text class="price_icon">￥</text>
-              <text class="price_num">219</text>
-            </view>
-
-            <view class="sales_wrap">
-              <text class="sales_txt">月售</text>
-              <text class="sales_num">2311</text>
-            </view>
-          </view>
-
-          <!-- 餐厅 -->
-          <view class="product_address">
-            <view class="store_name_wrap">
-              <text class="store_name">德克士旗舰店</text>
-              <van-icon name="arrow" />
-            </view>
-            <van-tag type="primary">满庭芳</van-tag>
-          </view>
-        </view>
+        <van-cell-group border="{{ false }}">
+          <van-cell icon="logistics" title="配送服务" value="提供送餐服务" />
+          <van-cell icon="underway-o" title="配送时间" value="07:00-23:00"/>
+          <van-cell icon="certificate" title="商家服务" value="可到店自取"/>
+        </van-cell-group>
       </view>
-    </view>
-
-    <view class="product_item">
-      <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
-      <view class="product_info">
-
-        <!-- 商品标题 -->
-        <view class="product_title ellipsis2">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
-
-        <view class="product_information">
-          <!-- 价格 -->
-          <view class="product_price">
-            <view class="price_wrap">
-              <text class="price_icon">￥</text>
-              <text class="price_num">219</text>
-            </view>
-
-            <view class="sales_wrap">
-              <text class="sales_txt">月售</text>
-              <text class="sales_num">2311</text>
-            </view>
-          </view>
-
-          <!-- 餐厅 -->
-          <view class="product_address">
-            <view class="store_name_wrap">
-              <text class="store_name">德克士旗舰店</text>
-              <van-icon name="arrow" />
-            </view>
-            <van-tag type="primary">满庭芳</van-tag>
-          </view>
-        </view>
-      </view>
-    </view>
+    </van-tab>
+  </van-tabs>
 
 
-  </view>
+
+
 
   <!-- 底部购物车栏 -->
-  <van-submit-bar
-    price="{{ 3050 }}"
-    button-text="提交订单"
-    bind:submit="onSubmit"
-  >
+  <van-submit-bar price="{{ 3050 }}" button-text="提交订单" bind:submit="onSubmit">
     <van-icon name="cart-circle" class="shop_cart_icon" />
   </van-submit-bar>
 

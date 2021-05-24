@@ -58,4 +58,18 @@ orders  订单量
 sales 销售额
 collections  收藏量
 
+
+om_product  商品集合
+_id
+imgList: []
+price: 234
+collection: 54
+title: 
+describe
+ingredients  主料、成份
+weight  份量
+sort   早餐  午餐 晚餐 
+publisher 商家的openid
+ 
+
 */

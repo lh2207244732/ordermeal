@@ -1,18 +1,46 @@
-// pages/storeDetails/storeDetails.js
+const db = wx.cloud.database()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    storeInfo: {}
+  },
 
+  //拨打电话
+  makePhoneCall() {
+    wx.makePhoneCall({
+      phoneNumber: '1340000'
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: async function (options) {
+    const { storeid } = options
+    //请求数据 查询店铺信息
+    const storeRes = await db.collection('om_store').where({openid:storeid}).get()
+    this.setData({
+      storeInfo: storeRes.data[0]
+    })
+    /*
+      address: "许昌学院满庭芳餐厅一楼 1号窗口 快递餐"
+collection: 0
+diningRoom: "满庭芳餐厅"
+logoUrl: "cloud://cloud1-6g41byxc4dfd0202.636c-cloud1-6g41byxc4dfd0202-1305805157/om_store/storeLogo_oClRs5AcDoSMeWXP3Qs77Qg5W__w1621833825870.png"
+name: "快递餐"
+notice: "新公告"
+openid: "oClRs5AcDoSMeWXP3Qs77Qg5W__w"
+orders: 0
+phone: "13412341234"
+productList: []
+sales: 0
+_id: "28ee4e3e60aa0adb1b9a205c61019e34"
+_openid: "oClRs5AcDoSMeWXP3Qs77Qg5W__w"
+    */
   },
 
   /**

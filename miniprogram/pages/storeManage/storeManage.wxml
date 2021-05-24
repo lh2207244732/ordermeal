@@ -37,7 +37,7 @@
         left-icon="volume-o"
         color="#1989fa"
         background="#ecf9ff"
-        speed="30"
+        speed="10"
         text="{{ storeInfo.notice }}"
       />
     </view>
@@ -88,7 +88,7 @@
           bind:after-read="handleUploaded" 
           bind:delete="handleDeleteLogo"
         />
-        <van-button block type="primary">完成</van-button>
+        <van-button block type="primary" bindtap="handleUpdateData">完成</van-button>
       </block>
 
       <!-- 店名变更面板 -->
