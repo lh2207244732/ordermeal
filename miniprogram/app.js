@@ -61,7 +61,7 @@ collections  收藏量
 
 om_product  商品集合
 _id
-imgList: []
+imageList: []
 price: 234
 collection: 54
 title: 
@@ -69,7 +69,10 @@ describe
 ingredients  主料、成份
 weight  份量
 sort   早餐  午餐 晚餐 
-publisher 商家的openid
+storeid 商家的openid
+collection: 0
+sales: 0
+status: 0 上架   1下架
  
 
 */

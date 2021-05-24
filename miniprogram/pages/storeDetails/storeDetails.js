@@ -16,6 +16,14 @@ Page({
     })
   },
 
+  //去商品详情页
+  goProductDetail(e) {
+    const { id } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: '/pages/productDetails/productDetails?id=' + id,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

@@ -13,10 +13,10 @@
     "miniprogram": {
       "list": [
         {
-          "id": -1,
-          "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide",
-          "query": ""
+          "name": "发布商品",
+          "pathName": "pages/publishProduct/publishProduct",
+          "query": "",
+          "scene": null
         },
         {
           "name": "店铺详情",

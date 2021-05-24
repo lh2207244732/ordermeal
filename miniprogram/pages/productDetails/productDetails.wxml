@@ -7,15 +7,15 @@
       circular
       indicator-active-color="#19b5fe"
     >
-      <block wx:for="{{imageList}}" wx:key="*this">
+      <block wx:for="{{productInfo.imageList}}" wx:key="item">
         <swiper-item>
           <image mode="aspectFill" class="image_item" src="{{item}}"></image>
         </swiper-item>
       </block>
     </swiper>
-    <view class="carousel_page_container flex_center">1/2</view>
+    <view class="carousel_page_container flex_center">1/{{productInfo.imageList.length}}</view>
     <view class="back_btn_wrap" style="top:{{statusBarHeight}}rpx">
-      <van-icon name="arrow-left" class="back_icon" />
+      <van-icon name="arrow-left" class="back_icon" bindtap="goBack" />
     </view>
   </view>
 
@@ -25,17 +25,17 @@
     <view class="price_wrapper">
       <view class="price_box">
         <text class="price_icon">￥</text>
-        <text class="price_num">126</text>
+        <text class="price_num">{{productInfo.price}}</text>
       </view>
 
       <view class="collection_box">
         <van-icon name="like-o" size="32rpx" class="collection_icon" />
-        <text class="collection_num">1298</text>
+        <text class="collection_num">{{productInfo.collection}}</text>
       </view>
     </view>
 
     <!-- 标题 -->
-    <view class="title_wrapper">高端牛仔裤男士夏季薄款宽松直筒潮流百搭长裤子浅色修身休闲裤kz百搭长裤子浅色修身休闲裤kz百搭长裤子浅色修身休闲裤kz</view>
+    <view class="title_wrapper">{{productInfo.title}}</view>
 
     <!-- 添加购物车按钮 -->
     <view class="addCart_section">
@@ -49,10 +49,10 @@
       <van-tab title="详情">
         <view class="product_details_content">
           <van-cell-group>
-            <van-cell size="large" title="掌柜描述" label="大骨头熬汤麻辣口味脆皮香肠+千页豆腐+冬瓜+土豆+海带+豆腐皮" />
-            <van-cell size="large" title="主料" label="千页豆腐" border="{{ false }}" />
-            <van-cell size="large" title="份量" label="1人份" />
-            <van-cell size="large" title="分类" label="早餐" />
+            <van-cell size="large" title="掌柜描述" label="{{productInfo.describe}}" />
+            <van-cell size="large" title="主料" label="{{productInfo.ingredients}}" border="{{ false }}" />
+            <van-cell size="large" title="份量" label="{{productInfo.weight}}" />
+            <van-cell size="large" title="分类" label="{{productInfo.sort}}" />
             <van-cell size="large" title="价格说明" label="商品的实时标价，不因表述的差异改变性质。具体成交价格根据商品参加活动，或会员使用优惠券、积分等发生变化，最终以订单结算页价格为准。" />
           </van-cell-group>
         </view>

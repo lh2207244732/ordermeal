@@ -27,7 +27,7 @@ view {
 .white_card{
   background-color: #fff;
   box-shadow: rgb(149 157 165 / 20%) 0rpx 1rpx 9rpx;
-  border-radius: 20rpx;
+  border-radius: 26rpx;
   padding: 24rpx;
   margin: 30rpx;
   overflow: hidden;

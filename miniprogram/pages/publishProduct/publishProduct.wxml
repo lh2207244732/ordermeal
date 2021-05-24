@@ -1,3 +1,103 @@
 <view class="page">
-  
+
+  <!-- 图片 -->
+  <view class="swiper_section white_card">
+    <swiper indicator-dots indicator-active-color="#19b5fe">
+      <block wx:for="{{imageList}}" wx:key="item">
+        <swiper-item bindtap="handlePreviewImage" data-index="{{index}}">
+          <image mode="aspectFill" class="image_item" src="{{item}}">
+          </image>
+          <view class="del_img_wrap flex_center" catchtap="handleDelImage" data-index="{{index}}">
+            <van-icon name="cross" class="del_img_icon" />
+          </view>
+        </swiper-item>
+      </block>
+      <block>
+        <swiper-item>
+          <van-uploader 
+            class="add_img_wrap flex_center" 
+            max-count="5"
+            accept="image"
+            preview-full-image
+            bind:after-read="handleUploaded" 
+          >
+            <van-icon name="add-o" class="add_img_icon" />
+          </van-uploader>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- 价格标题 -->
+  <view class="price_section white_card">
+    <van-cell-group border="{{ false }}">
+      <van-field
+        model:value="{{ title }}"
+        type="textarea"
+        label="标题"
+        placeholder="请输入标题"
+        autosize
+        clearable
+      />
+      <van-field
+        model:value="{{ price }}"
+        type="digit"
+        label="价格"
+        placeholder="请输入价格"
+        clearable
+      />
+    </van-cell-group>
+  </view>
+
+  <!-- 描述、份量 -->
+  <view class="info_section white_card">
+    <van-cell-group border="{{ false }}">
+      <van-field
+        model:value="{{ describe }}"
+        type="textarea"
+        label="掌柜描述"
+        placeholder="请输入描述"
+        autosize
+        clearable
+      />
+      <van-field
+        model:value="{{ ingredients }}"
+        type="textarea"
+        label="主料（成份）"
+        placeholder="请输入主料（成份）"
+        autosize
+        clearable
+      />
+      <van-field
+        model:value="{{ weight }}"
+        label="份量（重量）"
+        clearable
+      />
+    </van-cell-group>
+  </view>
+
+  <!-- 分类 -->
+  <view class="sort_section white_card">
+    <van-cell-group border="{{ false }}">
+      <van-radio-group value="{{ sort }}" bind:change="onSortChange">
+        <van-cell>
+          <van-radio name="早餐">早餐</van-radio>
+        </van-cell>
+        <van-cell>
+          <van-radio name="午餐">午餐</van-radio>
+        </van-cell>
+        <van-cell>
+          <van-radio name="晚餐">晚餐</van-radio>
+        </van-cell>
+      </van-radio-group>
+    </van-cell-group>
+  </view>
+
+  <!-- 提交按钮 -->
+  <view class="btn_section">
+    <van-button type="primary" round block bindtap="handleSubmit">发布</van-button>
+  </view>
+
+  <!-- 轻提示节点 -->
+	<van-toast id="van-toast" />
 </view>
