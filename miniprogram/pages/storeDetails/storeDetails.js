@@ -1,4 +1,6 @@
+const app = getApp()
 const db = wx.cloud.database()
+const { Toast } = app.globalData
 
 Page({
 
@@ -28,12 +30,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
+    Toast.loading({
+      message: '加载中...',
+      duration: 10000,
+      forbidClick: true,
+    });
     const { storeid } = options
+
     //请求数据 查询店铺信息
     const storeRes = await db.collection('om_store').where({openid:storeid}).get()
     this.setData({
       storeInfo: storeRes.data[0]
     })
+    Toast.clear()
     /*
       address: "许昌学院满庭芳餐厅一楼 1号窗口 快递餐"
 collection: 0

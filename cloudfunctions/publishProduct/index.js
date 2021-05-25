@@ -1,7 +1,10 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 
-cloud.init()
+cloud.init({
+  // API 调用都保持和云函数当前所在环境一致
+  env: cloud.DYNAMIC_CURRENT_ENV
+})
 const db = cloud.database()
 const _ = db.command
 
@@ -15,9 +18,6 @@ exports.main = async (event, context) => {
   const addRes = await db.collection('om_product').add({
     data
   })
-
-  
-  
 
   if (addRes._id) {//添加成功
     //查询数据

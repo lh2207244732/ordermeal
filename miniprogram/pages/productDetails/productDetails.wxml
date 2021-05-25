@@ -20,7 +20,7 @@
   </view>
 
   <!-- 价格标题部分 -->
-  <view class="price_wrapper_section">
+  <view class="price_wrapper_section card">
     <!-- 价格 -->
     <view class="price_wrapper">
       <view class="price_box">
@@ -44,7 +44,7 @@
   </view>
 
   <!-- 商品属性部分 -->
-  <view class="product_attr_section">
+  <view class="product_attr_section card">
     <van-tabs>
       <van-tab title="详情">
         <view class="product_details_content">
@@ -60,6 +60,17 @@
     </van-tabs>
   </view>
 
+  <!-- 店家信息部分 -->
+  <view class="store_section card" bindtap="goStoreDetail" data-id="{{productInfo.storeObj.openid}}">
+    <view class="store_avatar_wrap">
+      <image class="store_avatar" mode="aspectFill" src="{{productInfo.storeObj.logoUrl}}"></image>
+    </view>
+    <view class="store_name_wrap">
+      <text class="store_name">{{productInfo.storeObj.name}}</text>
+      <van-tag type="primary">{{productInfo.storeObj.diningRoom}}</van-tag>
+    </view>
+  </view>
+
   <!-- 底部购物车栏 -->
   <van-submit-bar
     price="{{ 3050 }}"
@@ -68,4 +79,7 @@
   >
     <van-icon name="cart-circle" class="shop_cart_icon" />
   </van-submit-bar>
+
+  <!-- 轻提示节点 -->
+  <van-toast id="van-toast" />
 </view>

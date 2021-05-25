@@ -1,5 +1,6 @@
-const app = getApp();
+const app = getApp()
 const db = wx.cloud.database()
+const { Toast } = app.globalData
 Page({
 
   /**
@@ -16,16 +17,33 @@ Page({
     })
   },
 
+  goStoreDetail(e) {
+    const openid = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/storeDetails/storeDetails?storeid=' + openid,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
+    Toast.loading({
+      message: '加载中...',
+      duration: 10000,
+      forbidClick: true,
+    });
     const { id } = options
-    //根据id查询数据
-    const res = await db.collection('om_product').doc(id).get()
-    this.setData({
-      productInfo: res.data
+    const productRes = await wx.cloud.callFunction({
+      name: 'getProduct',
+      data: {
+        id:id
+      }
     })
+    this.setData({
+      productInfo: productRes.result.data
+    })
+    Toast.clear()
   },
 
   /**

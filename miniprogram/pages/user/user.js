@@ -19,6 +19,10 @@ Page({
   
   //登录
   async handleLogin() {
+    let uinfo = this.data.userInfo
+    if (uinfo.avatarUrl) {
+      return
+    }
     let _this = this
 
     Toast.loading({

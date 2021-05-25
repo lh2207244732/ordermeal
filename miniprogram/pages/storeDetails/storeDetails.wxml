@@ -14,6 +14,7 @@
     <van-notice-bar left-icon="volume-o" color="#1989fa" background="#ecf9ff" speed="10" text="{{storeInfo.notice}}" />
   </view>
 
+  <!-- tab栏 -->
   <van-tabs animated color="#ee0a24">
     <van-tab title="点餐">
       <view class="meal_wrap">
@@ -22,7 +23,7 @@
         </view>
         <view class="product_list">
           <block wx:for="{{ storeInfo.productList }}" wx:key="_id">
-            <view class="product_item">
+            <view class="product_item" bindtap="goProductDetail" data-id="{{ item._id }}">
               <image class="product_main_img" mode="aspectFill"
                 src="{{ item.imageList[0] }}">
               </image>
@@ -47,7 +48,7 @@
 
                   <!-- 餐厅 -->
                   <view class="product_address">
-                    <view class="store_name_wrap" bindtap="goProductDetail" data-id="{{ item._id }}">
+                    <view class="store_name_wrap">
                       <text class="store_name">商品详情</text>
                       <van-icon name="arrow" />
                     </view>
@@ -78,13 +79,12 @@
     </van-tab>
   </van-tabs>
 
-
-
-
-
   <!-- 底部购物车栏 -->
   <van-submit-bar price="{{ 3050 }}" button-text="提交订单" bind:submit="onSubmit">
     <van-icon name="cart-circle" class="shop_cart_icon" />
   </van-submit-bar>
+
+  <!-- 轻提示节点 -->
+  <van-toast id="van-toast" />
 
 </view>

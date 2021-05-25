@@ -38,7 +38,7 @@ swiper {
   font-size: 46rpx;
 }
 
-.price_wrapper_section{
+.card{
   margin: 25rpx 18rpx;
   padding: 22rpx 28rpx 32rpx;
   border-radius: 16rpx;
@@ -89,14 +89,30 @@ swiper {
   justify-content: flex-end;
 }
 
-.product_attr_section{
-  margin: 25rpx 18rpx;
-  padding: 22rpx 20rpx 32rpx;
-  border-radius: 16rpx;
-  background-color: #fff;
-}
-
 .shop_cart_icon{
   font-size: 60rpx;
   color: #939391;
+}
+
+.store_section{
+  display: flex;
+  align-items: center;
+  padding-top: 32rpx;
+}
+.store_avatar{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 16rpx;
+  box-shadow: rgb(99 99 99 / 20%) 0px 4rpx 16rpx 0px;
+  margin-right: 40rpx;
+}
+.store_name_wrap{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+.store_name{
+  font-size: 28rpx;
+  color: #888;
+  margin-bottom: 20rpx;
 }

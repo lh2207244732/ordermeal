@@ -33,7 +33,7 @@
         {
           "name": "商品详情",
           "pathName": "pages/productDetails/productDetails",
-          "query": "",
+          "query": "id=79550af260abd11719d95de42ce28269",
           "scene": null
         },
         {
