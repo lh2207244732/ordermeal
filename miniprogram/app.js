@@ -1,5 +1,6 @@
 //app.js
 import Toast from './miniprogram_npm/@vant/weapp/toast/toast';
+import Dialog from './miniprogram_npm/@vant/weapp/dialog/dialog';
 
 App({
   onLaunch: function () {
@@ -23,7 +24,8 @@ App({
       success: function (res) {
         _this.globalData = {
           statusBarHeight: res.statusBarHeight,
-          Toast: Toast
+          Toast: Toast,
+          Dialog: Dialog
         }
       }
     })

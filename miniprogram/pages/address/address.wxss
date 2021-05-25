@@ -63,6 +63,11 @@
   font-size: 34rpx;
   margin-right: 10rpx;
 }
+.istop_y_icon{
+  font-size: 34rpx;
+  margin-right: 10rpx;
+  color: #ff5c34;
+}
 
 .btn_wrap{
   width: 100%;
@@ -75,6 +80,22 @@
 
 .action_sheet_node{
   min-height: 500rpx;
-  padding: 30rpx;
+  padding: 30rpx 30rpx 60rpx;
   text-align: center;
+}
+
+.radio_wrap{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 22rpx 0;
+}
+
+.save_address_btn_wrap{
+  padding-top: 28rpx;
+}
+.pop_address_title{
+  font-size: 30rpx;
+  color: #777;
+  padding-bottom: 40rpx;
 }

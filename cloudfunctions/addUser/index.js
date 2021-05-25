@@ -22,6 +22,12 @@ exports.main = async (event, context) => {
       orders: 0
     }
   })
+  await db.collection('om_address').add({
+    data: {
+      openid: openid,
+      addressList: []
+    }
+  })
   const user = await db.collection('om_user').where({ openid }).get()
   return {
     user: user.data[0]

@@ -59,7 +59,6 @@
 		<van-cell-group border="{{false}}">
 			<van-cell 
 				is-link 
-				link-type="navigateTo"
 				url="/pages/address/address"
 			>
 				<view slot="title" class="cell_slot">
