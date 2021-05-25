@@ -1,0 +1,89 @@
+<view class="page">
+  <view class="list">
+    <!-- 地址 -->
+    <block>
+      <view class="address_item white_card">
+        <view class="item_top">
+          <view class="item_top_left">
+            <view class="name_wrap">
+              <text class="name_txt">杨样阳</text>
+              <text class="phone_txt">15825684650</text>
+            </view>
+            <view class="address_wrap">许昌学院 静庐宿舍 四号楼 530</view>
+          </view>
+          <view class="item_top_right">
+            <van-icon name="edit" class="edit_address_icon" />
+          </view>
+        </view>
+        <view class="item_bottom">
+          <view class="item_bottom_left">
+            <van-icon name="circle" class="istop_n_icon"/>
+            <text class="istop_txt">默认地址</text>
+          </view>
+          <view class="item_bottom_right">删除</view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 添加地址按钮部分 -->
+  <view class="btn_wrap">
+    <van-button 
+      type="primary" 
+      color="linear-gradient(to right, rgb(255, 96, 52), rgb(238, 10, 36))" 
+      round 
+      block
+      bindtap="handleIncreaseAddress"
+    >添加收货地址</van-button>
+  </view>
+
+  <!-- 动作面板 -->
+  <van-action-sheet 
+    show="{{ actionSheetShow }}" 
+    title="添加收货地址"
+    bind:close="handleCloseActionSheet"
+  >
+    <view class="action_sheet_node">
+      <van-cell-group border="{{ false }}">
+        <van-field
+          model:value="{{ name }}"
+          label="收货人"
+          placeholder="名字"
+        />
+        <van-field
+          model:value="{{ phone }}"
+          type="digit"
+          label="手机号码"
+          placeholder="手机号"
+        />
+        <van-field
+          model:value="{{ dormitory }}"
+          label="宿舍"
+        >
+          <van-radio-group
+            value="{{ dormitory }}"
+            bind:change="onDormitoryChange"
+            border="{{ false }}"
+          >
+            <van-radio name="静庐宿舍">静庐宿舍</van-radio>
+            <van-radio name="宁园宿舍">宁园宿舍</van-radio>
+          </van-radio-group>
+        </van-field>
+      </van-cell-group>
+      <!-- <van-radio-group
+        value="{{ dormitory }}"
+        bind:change="onDormitoryChange"
+        border="{{ false }}"
+      >
+        <van-cell-group>
+          <van-cell title="静庐宿舍" clickable data-name="静庐宿舍" bind:click="onDormitoryClick">
+            <van-radio slot="right-icon" name="静庐宿舍" />
+          </van-cell>
+          <van-cell title="宁园宿舍" clickable data-name="宁园宿舍" bind:click="onDormitoryClick">
+            <van-radio slot="right-icon" name="宁园宿舍" />
+          </van-cell>
+        </van-cell-group>
+      </van-radio-group> -->
+    </view>
+  </van-action-sheet>
+</view>

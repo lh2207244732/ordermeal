@@ -53,6 +53,12 @@
           "pathName": "pages/storeManage/storeManage",
           "query": "openid=oClRs5AcDoSMeWXP3Qs77Qg5W__w",
           "scene": null
+        },
+        {
+          "name": "收货地址",
+          "pathName": "pages/address/address",
+          "query": "id=79550af260abd11719d95de42ce28269",
+          "scene": null
         }
       ]
     }

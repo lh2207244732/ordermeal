@@ -8,7 +8,8 @@
     "pages/storeDetails/storeDetails",
     "pages/registerStore/registerStore",
     "pages/storeManage/storeManage",
-    "pages/publishProduct/publishProduct"
+    "pages/publishProduct/publishProduct",
+    "pages/address/address"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

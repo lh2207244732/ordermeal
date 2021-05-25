@@ -1,0 +1,80 @@
+.page {
+  background-color: #f3f3f3;
+  padding-top: 30rpx;
+  min-height: 100vh;
+}
+
+.address_item{
+  padding-top: 12rpx;
+  padding-bottom: 18rpx;
+}
+
+.item_top{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+}
+.item_top_left{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+.name_wrap{
+  display: flex;
+  align-items: center;
+}
+.name_txt{
+  font-size: 34rpx;
+  color: #444;
+}
+.phone_txt{
+  font-size: 26rpx;
+  color: #999;
+  margin-left: 16rpx;
+}
+.address_wrap{
+  font-size: 28rpx;
+  color: #444;
+  margin-top: 18rpx;
+}
+.edit_address_icon{
+  font-size: 38rpx;
+  color: #888;
+}
+
+
+.item_bottom{
+  border-top: 1rpx solid #dcdcdc;
+  padding-top: 24rpx;
+  padding-bottom: 16rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+  color: #888;
+}
+.item_bottom_left{
+  display: flex;
+  align-items: center;
+}
+.istop_n_icon{
+  font-size: 34rpx;
+  margin-right: 10rpx;
+}
+
+.btn_wrap{
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 17rpx 30rpx;
+}
+
+.action_sheet_node{
+  min-height: 500rpx;
+  padding: 30rpx;
+  text-align: center;
+}

@@ -57,21 +57,34 @@
 	<!-- 功能栏 -->
 	<view class="func_section white_card" bindtap="handleNoLogin">
 		<van-cell-group border="{{false}}">
-			<van-cell is-link>
+			<van-cell 
+				is-link 
+				link-type="navigateTo"
+				url="/pages/address/address"
+			>
 				<view slot="title" class="cell_slot">
 					<van-icon name="friends-o" class="friends_icon cell_icon" />
 					<text class="van_cell_text">账号信息</text>
 				</view>
 			</van-cell>
 
-			<van-cell is-link>
+			<van-cell 
+				is-link
+				link-type="navigateTo"
+				url="/pages/address/address"
+			>
 				<view slot="title" class="cell_slot">
 					<van-icon name="clock-o" class="history_icon cell_icon" />
 					<text class="van_cell_text">我的足迹</text>
 				</view>
 			</van-cell>
 
-			<van-cell is-link border="{{false}}">
+			<van-cell 
+				is-link 
+				link-type="navigateTo"
+				url="/pages/address/address"
+				border="{{false}}"
+			>
 				<view slot="title" class="cell_slot">
 					<van-icon name="location-o" class="address_icon cell_icon" />
 					<text class="van_cell_text">收货地址</text>
