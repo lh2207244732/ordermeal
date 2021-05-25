@@ -17,7 +17,30 @@
   <view class="hot_section">
     <scroll-view class="hot_scroll_wrap" scroll-x="true" scroll-with-animation scroll-anchoring
     >
-      <view class="hot_item">
+      <view class="hot_item" wx:for="{{hotStoreList}}" wx:key="_id">
+        <view class="hot_item_head">
+          <image mode="aspectFill" class="store_avatar" src="{{item.logoUrl}}"></image>
+          <view class="store_name">{{item.name}}</view>
+        </view>
+        <view class="hot_item_content">
+          <view class="hot_item_line">
+            <text class="goods_index">1</text>
+            <image mode="aspectFill" class="goods_avatar" src="{{item.productList[0].imageList[0]}}"></image>
+            <text class="goods_title">{{item.productList[0].title}}</text>
+          </view>
+          <view class="hot_item_line">
+            <text class="goods_index">2</text>
+            <image mode="aspectFill" class="goods_avatar" src="{{item.productList[1].imageList[0]}}"></image>
+            <text class="goods_title">{{item.productList[1].title}}</text>
+          </view>
+          <view class="hot_item_line">
+            <text class="goods_index">3</text>
+            <image mode="aspectFill" class="goods_avatar" src="{{item.productList[2].imageList[0]}}"></image>
+            <text class="goods_title">{{item.productList[2].title}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="hot_item">
         <view class="hot_item_head">
           <image mode="widthFix" class="store_avatar" src="../../static/test/store_avatar.png"></image>
           <view class="store_name">自选CIA店铺</view>
@@ -39,32 +62,9 @@
             <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
           </view>
         </view>
-      </view>
-      <view class="hot_item">
-        <view class="hot_item_head">
-          <image mode="widthFix" class="store_avatar" src="../../static/test/store_avatar.png"></image>
-          <view class="store_name">自选CIA店铺</view>
-        </view>
-        <view class="hot_item_content">
-          <view class="hot_item_line">
-            <text class="goods_index">1</text>
-            <image mode="widthFix" class="goods_avatar" src="../../static/test/goods_avatar.png"></image>
-            <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
-          </view>
-          <view class="hot_item_line">
-            <text class="goods_index">2</text>
-            <image mode="widthFix" class="goods_avatar" src="../../static/test/goods_avatar.png"></image>
-            <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
-          </view>
-          <view class="hot_item_line">
-            <text class="goods_index">3</text>
-            <image mode="widthFix" class="goods_avatar" src="../../static/test/goods_avatar.png"></image>
-            <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
-          </view>
-        </view>
-      </view>
+      </view> -->
 
-      <view class="hot_item">
+      <!-- <view class="hot_item">
         <view class="hot_item_head">
           <image mode="widthFix" class="store_avatar" src="../../static/test/store_avatar.png"></image>
           <view class="store_name">自选CIA店铺</view>
@@ -86,16 +86,146 @@
             <text class="goods_title">碳烤肉串小串（烧烤销量王）</text>
           </view>
         </view>
-      </view>
+      </view> -->
 
 
     </scroll-view>
   </view>
 
-  <!-- 推荐 -->
+  <!-- 早餐推荐 -->
   <view class="rec_section">
     <view class="rec_head">
-      <van-dropdown-menu>
+      <text class="title_h1">早餐推荐</text>
+      <text class="title_more">查看更多</text>
+    </view>
+    <view class="rec_content">
+      <navigator class="product_item" url="/pages/productDetails/productDetails">
+        <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
+        <view class="product_title ellipsis">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">满挺芳餐厅</text>
+        </view>
+      </navigator>
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://img0.baidu.com/it/u=3649211823,1942766548&fm=11&fmt=auto&gp=0.jpg"></image>
+        <view class="product_title ellipsis">肯德基汉堡简笔画德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">满挺芳餐厅</text>
+        </view>
+      </view>
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn09%2F266%2Fw640h426%2F20180619%2Fa931-heauxvz3809840.jpg&refer=http%3A%2F%2Fn.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623417679&t=d9f45cae6f26ea9bbebb75edb596fe94"></image>
+        <view class="product_title ellipsis">肯德基汉堡简笔画德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">满挺芳餐厅</text>
+        </view>
+      </view>
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://img1.baidu.com/it/u=3253115732,2825130522&fm=26&fmt=auto&gp=0.jpg"></image>
+        <view class="product_title ellipsis">肯德基汉堡简笔画德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">沁园春餐厅</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 午餐推荐 -->
+  <view class="rec_section">
+    <view class="rec_head">
+      <text class="title_h1">早餐推荐</text>
+      <text class="title_more">查看更多</text>
+    </view>
+    <view class="rec_content">
+      <navigator class="product_item" url="/pages/productDetails/productDetails">
+        <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
+        <view class="product_title ellipsis">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">满挺芳餐厅</text>
+        </view>
+      </navigator>
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://img0.baidu.com/it/u=3649211823,1942766548&fm=11&fmt=auto&gp=0.jpg"></image>
+        <view class="product_title ellipsis">肯德基汉堡简笔画德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">满挺芳餐厅</text>
+        </view>
+      </view>
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn09%2F266%2Fw640h426%2F20180619%2Fa931-heauxvz3809840.jpg&refer=http%3A%2F%2Fn.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623417679&t=d9f45cae6f26ea9bbebb75edb596fe94"></image>
+        <view class="product_title ellipsis">肯德基汉堡简笔画德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">满挺芳餐厅</text>
+        </view>
+      </view>
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://img1.baidu.com/it/u=3253115732,2825130522&fm=26&fmt=auto&gp=0.jpg"></image>
+        <view class="product_title ellipsis">肯德基汉堡简笔画德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">沁园春餐厅</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 晚餐推荐 -->
+  <view class="rec_section">
+    <view class="rec_head">
+      <text class="title_h1">早餐推荐</text>
+      <text class="title_more">查看更多</text>
+    </view>
+    <view class="rec_content">
+      <navigator class="product_item" url="/pages/productDetails/productDetails">
+        <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp0.meituan.net%2Fdeal%2F__47734570__1545018.jpg&refer=http%3A%2F%2Fp0.meituan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623416396&t=b3916bf2f69f8511efa327071376f885"></image>
+        <view class="product_title ellipsis">德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">满挺芳餐厅</text>
+        </view>
+      </navigator>
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://img0.baidu.com/it/u=3649211823,1942766548&fm=11&fmt=auto&gp=0.jpg"></image>
+        <view class="product_title ellipsis">肯德基汉堡简笔画德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">满挺芳餐厅</text>
+        </view>
+      </view>
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn09%2F266%2Fw640h426%2F20180619%2Fa931-heauxvz3809840.jpg&refer=http%3A%2F%2Fn.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1623417679&t=d9f45cae6f26ea9bbebb75edb596fe94"></image>
+        <view class="product_title ellipsis">肯德基汉堡简笔画德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">满挺芳餐厅</text>
+        </view>
+      </view>
+      <view class="product_item">
+        <image class="product_main_img" mode="aspectFill" src="https://img1.baidu.com/it/u=3253115732,2825130522&fm=26&fmt=auto&gp=0.jpg"></image>
+        <view class="product_title ellipsis">肯德基汉堡简笔画德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁德克士汉堡鸡腿堡蜜汁</view>
+        <view class="sales_wrap">
+          <text class="product_sales">月售：123</text>
+          <text class="product_restaurant">沁园春餐厅</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <van-divider contentPosition="center">已经到底啦</van-divider>
+
+
+
+
+
+  <!-- <view class="rec_section">
+    <view class="rec_head">
+      <van-dropdown-menu overlay>
         <van-dropdown-item value="{{ productOrder }}" options="{{ productOrderList }}" />
         <van-dropdown-item value="{{ productSort }}" options="{{ productSortList }}" />
       </van-dropdown-menu>
@@ -135,6 +265,9 @@
         </view>
       </view>
     </view>
-  </view>
+  </view> -->
+
+  <!-- 轻提示节点 -->
+	<van-toast id="van-toast" />
 
 </view>

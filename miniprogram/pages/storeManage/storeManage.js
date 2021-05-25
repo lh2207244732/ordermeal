@@ -85,7 +85,7 @@ Page({
 
   //功能区点击
   itemClick(e) {
-    let openid = this.data.storeInfo.openid
+    let { openid,diningRoom } = this.data.storeInfo
     let index = e.currentTarget.dataset.index
     if ([3,4,5,6,7].indexOf(index) != -1) {
       this.setData({
@@ -95,7 +95,7 @@ Page({
     }
     if (index == 0) {
       wx.navigateTo({
-        url: '/pages/publishProduct/publishProduct?storeid=' + openid,
+        url: '/pages/publishProduct/publishProduct?storeid=' + openid + '&diningRoom=' + diningRoom,
       })
     }
     if (index == 8) {

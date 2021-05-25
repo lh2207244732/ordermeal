@@ -1,5 +1,6 @@
 .page{
   background-color: #f5f5f5;
+  padding-bottom: 2rpx;
 }
 
 /* 搜索 */
@@ -60,6 +61,7 @@
 }
 .hot_item_head .store_avatar{
   width: 80rpx;
+  height: 80rpx;
   border-radius: 6rpx;
 }
 .hot_item_head .store_name{
@@ -81,12 +83,13 @@
 }
 .hot_item_line .goods_avatar{
   width: 84rpx;
+  height: 84rpx;
   border-radius: 10rpx;
   margin-left: 30rpx;
   margin-right: 20rpx;
 }
 .hot_item_line .goods_title{
-  font-size: 30rpx;
+  font-size: 28rpx;
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 380rpx;
@@ -96,14 +99,29 @@
 /* 推荐 */
 .rec_section{
   margin: 35rpx 26rpx 0;
-  border-radius: 20rpx;
+  border-radius: 24rpx;
   overflow: hidden;
+  background-color: #fff;
+}
+.rec_head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 34rpx 22rpx 28rpx;
+}
+.title_h1{
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #222;
+}
+.title_more{
+  font-size: 28rpx;
+  color: #999;
 }
 .rec_content{
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  background-color: #fff;
   padding-left: 20rpx;
   padding-right: 20rpx;
   padding-bottom: 17rpx;
@@ -128,7 +146,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #666;
+  color: #888;
   font-size: 26rpx;
   margin-top: 8rpx;
 }

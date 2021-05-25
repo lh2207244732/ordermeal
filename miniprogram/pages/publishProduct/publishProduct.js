@@ -9,6 +9,7 @@ Page({
    */
   data: {
     storeid: '',
+    diningRoom: '',
     imageList: [],
     title: '',
     price: null,
@@ -69,7 +70,6 @@ Page({
     //验证表单
     const val = this.validate()
     if (val) {
-
       this.requestPublish()
     }
   },
@@ -112,11 +112,11 @@ Page({
       forbidClick: true,
     });
 
-    const { storeid,imageList,title,price,describe,ingredients,weight,sort } = this.data
+    const { storeid,diningRoom,imageList,title,price,describe,ingredients,weight,sort } = this.data
     const pubRes = await wx.cloud.callFunction({
       name: 'publishProduct',
       data: {
-        data: { storeid,imageList,title,price,describe,ingredients,weight,sort }
+        data: { storeid,diningRoom,imageList,title,price,describe,ingredients,weight,sort }
       }
     })
     const { status } = pubRes.result
@@ -140,8 +140,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const { storeid,diningRoom } = options
     this.setData({
-      storeid: options.storeid
+      storeid,
+      diningRoom
     })
   },
 

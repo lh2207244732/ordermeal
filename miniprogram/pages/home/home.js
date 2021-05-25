@@ -1,4 +1,6 @@
-// pages/home/home.js
+const app = getApp()
+const db = wx.cloud.database()
+const { Toast } = app.globalData
 Page({
 
   /**
@@ -9,11 +11,11 @@ Page({
     diningRoomActiveIndex: 0,
     diningRoom: [
       {
-        name: '满庭芳',
+        name: '满庭芳餐厅',
         index: 0
       },
       {
-        name: '沁园春',
+        name: '沁园春餐厅',
         index: 1
       }
     ],
@@ -28,7 +30,10 @@ Page({
       { text: '早餐', value: 'breakfast' },
       { text: '午餐', value: 'lunch' },
       { text: '晚餐', value: 'dinner' },
-    ]
+    ],
+    limit: 6,
+    hotStoreList: [],
+    recProductList: [],
   },
 
   //搜索框点击
@@ -63,7 +68,53 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    Toast.loading({
+      message: '加载中...',
+      duration: 10000,
+      forbidClick: true,
+    });
+    //获取首页数据
+    this.getHotStore()
+  },
 
+  //获取首页热销店铺
+  async getHotStore() {
+    const { diningRoomActiveIndex,diningRoom,productOrder,productSort,limit } = this.data
+    let activeRoom = diningRoom[diningRoomActiveIndex].name
+
+    //获取首页热销店铺数据
+    const hotStoreRes = await db.collection('om_store').where({
+      diningRoom: activeRoom
+    }).field({
+      logoUrl: 1,
+      name: 1,
+      openid: 1,
+      productList: 1
+    }).limit(3).get()
+    this.setData({
+      hotStoreList: hotStoreRes.data
+    })
+
+    Toast.clear()
+
+    //获取推荐商品数据
+    // this.getProductList(activeRoom,productOrder,productSort,0,limit)
+  },
+
+  async getProductList(diningRoom,order,sort,skip,limit) {
+    let newProList
+    if (order == 'sales') {
+      newProList = await db.collection('om_product').where({
+        diningRoom,
+        sort,
+      }).orderBy(order, 'desc').skip(skip).limit(limit).get()
+    } else {
+      newProList = await db.collection('om_product').where({
+        diningRoom,
+        sort,
+      }).skip(skip).limit(limit).get()
+    }
+    console.log(newProList);
   },
 
   /**
