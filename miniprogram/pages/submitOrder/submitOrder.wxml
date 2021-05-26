@@ -1,0 +1,62 @@
+<view class="page">
+  <!-- 背景颜色节点 -->
+  <view class="page_bg">
+  </view>
+
+  <!-- 收货地址 -->
+  <view class="address_section white_card">
+    <view class="item_top">
+      <view class="item_top_left">
+        <view class="name_wrap">
+          <text class="name_txt">张咸亨</text>
+          <text class="phone_txt">15879465236</text>
+        </view>
+        <view class="address_wrap">许昌学院 阿萨德奥迪沙发安抚啊发放</view>
+      </view>
+      <view class="item_top_right">
+        <van-icon name="arrow" class="edit_address_icon"/>
+      </view>
+    </view>
+    
+  </view>
+
+  <!-- 商品数据 -->
+  <view class="product_section white_card">
+    
+    <!-- 商家信息 -->
+    <view class="store_info_wrap">
+      肯德基旗舰店（万达点）
+    </view>
+
+    <view class="product_card">
+      <view class="product_avatar_wrap">
+        <image mode="aspectFill" class="product_avatar" src="https://cdn2.jianshu.io/assets/default_avatar/6-fd30f34c8641f6f32f5494df5d6b8f3c.jpg"></image>
+      </view>
+      <view class="product_title_wrap">
+        <view class="p_title ellipsis2">在app.json或index.json中引入组件，详细介绍见快速上手</view>
+        <view class="p_price_wrap">
+          <text class="price_icon">￥</text>
+          <text class="price_num">1243</text>
+        </view>
+      </view>
+      <view class="product_num_wrap">x12</view>
+    </view>
+    
+  </view>
+
+  <!-- 其他属性 -->
+  <view class="other_attr_section white_card">
+    <van-cell-group border="{{ false }}">
+      <van-cell title="取餐方式" value="自取" is-link />
+      <van-cell title="送餐时间" value="18:00" is-link />
+      <van-cell title="付款方式" value="当面付款" is-link />
+      <van-cell title="备注" value="口味、偏好等" is-link border="{{ false }}" />
+    </van-cell-group>
+  </view>
+
+  <van-submit-bar
+    price="{{ 3050 }}"
+    button-text="提交订单"
+    bind:submit="onSubmit"
+  />
+</view>

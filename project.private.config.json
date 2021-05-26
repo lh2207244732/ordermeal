@@ -59,6 +59,11 @@
           "pathName": "pages/address/address",
           "query": "id=79550af260abd11719d95de42ce28269",
           "scene": null
+        },
+        {
+          "name": "提交订单",
+          "pathName": "pages/submitOrder/submitOrder",
+          "scene": null
         }
       ]
     }

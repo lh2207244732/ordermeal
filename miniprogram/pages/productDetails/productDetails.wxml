@@ -6,6 +6,8 @@
       indicator-dots
       circular
       indicator-active-color="#19b5fe"
+      current="swiperActiveIndex"
+      bindchange="onSwiperChange"
     >
       <block wx:for="{{productInfo.imageList}}" wx:key="item">
         <swiper-item>
@@ -13,7 +15,7 @@
         </swiper-item>
       </block>
     </swiper>
-    <view class="carousel_page_container flex_center">1/{{productInfo.imageList.length}}</view>
+    <view class="carousel_page_container flex_center">{{swiperActiveIndex+1}}/{{productInfo.imageList.length}}</view>
     <view class="back_btn_wrap" style="top:{{statusBarHeight}}rpx">
       <van-icon name="arrow-left" class="back_icon" bindtap="goBack" />
     </view>
@@ -27,20 +29,25 @@
         <text class="price_icon">￥</text>
         <text class="price_num">{{productInfo.price}}</text>
       </view>
-
-      <view class="collection_box">
-        <van-icon name="like-o" size="32rpx" class="collection_icon" />
-        <text class="collection_num">{{productInfo.collection}}</text>
-      </view>
     </view>
 
     <!-- 标题 -->
     <view class="title_wrapper">{{productInfo.title}}</view>
 
-    <!-- 添加购物车按钮 -->
-    <view class="addCart_section">
-      <van-button type="warning" round size="small">加入购物车</van-button>
+    <!-- 功能操作 -->
+    <view class="product_func_section">
+      <view class="product_func_item collection_box" bindtap="hitCollection">
+        <van-icon name="like" size="36rpx" class="collection_icon" color="#ee0a24" wx:if="{{isCollection}}" />
+        <van-icon name="like-o" size="34rpx" class="collection_icon" wx:if="{{!isCollection}}" />
+        <text class="collection_num">{{productInfo.collection}}</text>
+      </view>
+
+      <button class="product_func_item" open-type="share">
+        <van-icon name="share" size="34rpx" class="collection_icon" />
+        <text class="collection_num">分享</text>
+      </button>
     </view>
+    
   </view>
 
   <!-- 商品属性部分 -->
@@ -72,13 +79,11 @@
   </view>
 
   <!-- 底部购物车栏 -->
-  <van-submit-bar
-    price="{{ 3050 }}"
-    button-text="提交订单"
-    bind:submit="onSubmit"
-  >
-    <van-icon name="cart-circle" class="shop_cart_icon" />
-  </van-submit-bar>
+  <van-goods-action>
+    <van-goods-action-icon icon="phone-o" text="联系商家" bind:click="onContactClick" />
+    <van-goods-action-button text="立即购买" bind:click="onClickButton" />
+    
+  </van-goods-action>
 
   <!-- 轻提示节点 -->
   <van-toast id="van-toast" />

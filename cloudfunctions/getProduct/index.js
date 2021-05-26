@@ -24,6 +24,7 @@ exports.main = async (event, context) => {
                             diningRoom:1,
                             logoUrl: 1,
                             name: 1,
+                            phone: 1,
                           })
                           .get()
   data.storeObj = storeRes.data[0]

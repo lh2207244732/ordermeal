@@ -33,7 +33,9 @@ Page({
     ],
     limit: 6,
     hotStoreList: [],
-    recProductList: [],
+    breakfastList: [],
+    lunchList: [],
+    dinnerList: []
   },
 
   //搜索框点击
@@ -68,18 +70,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    Toast.loading({
+    Toast.loading({      
       message: '加载中...',
       duration: 10000,
       forbidClick: true,
     });
     //获取首页数据
-    this.getHotStore()
+    this.getHotRecommend()
   },
 
   //获取首页热销店铺
-  async getHotStore() {
-    const { diningRoomActiveIndex,diningRoom,productOrder,productSort,limit } = this.data
+  async getHotRecommend() {
+    const { diningRoomActiveIndex,diningRoom } = this.data
+    //获取当前餐厅选项
     let activeRoom = diningRoom[diningRoomActiveIndex].name
 
     //获取首页热销店铺数据
@@ -91,30 +94,34 @@ Page({
       openid: 1,
       productList: 1
     }).limit(3).get()
+
+    //获取三个商品推荐列表
+    const breakfastList = await this.getProductList(activeRoom, '早餐', 4)
+    const lunchList = await this.getProductList(activeRoom, '午餐', 4)
+    const dinnerList = await this.getProductList(activeRoom, '晚餐', 4)
+   
     this.setData({
-      hotStoreList: hotStoreRes.data
+      hotStoreList: hotStoreRes.data,
+      breakfastList,
+      lunchList,
+      dinnerList
     })
 
     Toast.clear()
-
-    //获取推荐商品数据
-    // this.getProductList(activeRoom,productOrder,productSort,0,limit)
   },
 
-  async getProductList(diningRoom,order,sort,skip,limit) {
-    let newProList
-    if (order == 'sales') {
-      newProList = await db.collection('om_product').where({
-        diningRoom,
-        sort,
-      }).orderBy(order, 'desc').skip(skip).limit(limit).get()
-    } else {
-      newProList = await db.collection('om_product').where({
-        diningRoom,
-        sort,
-      }).skip(skip).limit(limit).get()
-    }
-    console.log(newProList);
+  async getProductList(diningRoom,sort,limit) {
+    const resList = await db.collection('om_product').where({
+      diningRoom,
+      sort
+    }).field({
+      _id: 1,
+      diningRoom: 1,
+      sales: 1,
+      imageList: 1,
+      title: 1,
+    }).limit(4).get()
+    return resList.data
   },
 
   /**
