@@ -78,10 +78,10 @@
     </view>
   </view>
 
-  <!-- 底部购物车栏 -->
+  <!-- 底部购买栏 -->
   <van-goods-action>
     <van-goods-action-icon icon="phone-o" text="联系商家" bind:click="onContactClick" />
-    <van-goods-action-button text="立即购买" bind:click="onClickButton" />
+    <van-goods-action-button text="立即购买" bind:click="onPurchaseClick" />
     
   </van-goods-action>
 

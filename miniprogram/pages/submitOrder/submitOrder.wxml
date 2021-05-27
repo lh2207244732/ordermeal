@@ -4,14 +4,14 @@
   </view>
 
   <!-- 收货地址 -->
-  <view class="address_section white_card">
+  <view class="address_section white_card" bindtap="handleChangeAddress">
     <view class="item_top">
       <view class="item_top_left">
         <view class="name_wrap">
-          <text class="name_txt">张咸亨</text>
-          <text class="phone_txt">15879465236</text>
+          <text class="name_txt">{{addressList[addressActiveIndex].name}}</text>
+          <text class="phone_txt">{{addressList[addressActiveIndex].phone}}</text>
         </view>
-        <view class="address_wrap">许昌学院 阿萨德奥迪沙发安抚啊发放</view>
+        <view class="address_wrap">许昌学院 {{addressList[addressActiveIndex].dormitory}} {{addressList[addressActiveIndex].building}}  {{addressList[addressActiveIndex].roomNumber}}</view>
       </view>
       <view class="item_top_right">
         <van-icon name="arrow" class="edit_address_icon"/>
@@ -25,21 +25,21 @@
     
     <!-- 商家信息 -->
     <view class="store_info_wrap">
-      肯德基旗舰店（万达点）
+      {{purchaseData.storeObj.name}} {{purchaseData.storeObj.diningRoom}}
     </view>
 
     <view class="product_card">
       <view class="product_avatar_wrap">
-        <image mode="aspectFill" class="product_avatar" src="https://cdn2.jianshu.io/assets/default_avatar/6-fd30f34c8641f6f32f5494df5d6b8f3c.jpg"></image>
+        <image mode="aspectFill" class="product_avatar" src="{{purchaseData.imageList[0]}}"></image>
       </view>
       <view class="product_title_wrap">
-        <view class="p_title ellipsis2">在app.json或index.json中引入组件，详细介绍见快速上手</view>
+        <view class="p_title ellipsis2">{{purchaseData.title}}</view>
         <view class="p_price_wrap">
           <text class="price_icon">￥</text>
-          <text class="price_num">1243</text>
+          <text class="price_num">{{purchaseData.price}}</text>
         </view>
       </view>
-      <view class="product_num_wrap">x12</view>
+      <view class="product_num_wrap">x1</view>
     </view>
     
   </view>
@@ -47,16 +47,82 @@
   <!-- 其他属性 -->
   <view class="other_attr_section white_card">
     <van-cell-group border="{{ false }}">
-      <van-cell title="取餐方式" value="自取" is-link />
-      <van-cell title="送餐时间" value="18:00" is-link />
-      <van-cell title="付款方式" value="当面付款" is-link />
-      <van-cell title="备注" value="口味、偏好等" is-link border="{{ false }}" />
+      <van-cell title="取餐方式" value="{{pickMode}}" is-link bindtap="handlePickModeClick" />
+      <van-cell title="送餐时间" value="{{pickTime}}" is-link wx:if="{{pickMode=='配送'}}" bindtap="handlePickTime" />
+      <van-cell title="付款方式" value="{{payment}}" is-link />
+      <van-cell title="备注" value="口味、偏好等" is-link border="{{ false }}" bindtap="handleAddRemark" />
     </van-cell-group>
   </view>
 
+  <!-- 底部提交订单按钮 -->
   <van-submit-bar
-    price="{{ 3050 }}"
+    price="{{ purchaseData.price * 100 }}"
     button-text="提交订单"
-    bind:submit="onSubmit"
+    bind:submit="onSubmitOrder"
   />
+
+  <!-- 弹出层节点 -->
+  <van-popup 
+    show="{{ action_pop_show }}" 
+    position="bottom"
+    round
+    closeable
+    bind:close="onActionPopClose"
+  >
+    <!-- 收货地址节点 -->
+    <view class="pop_node" wx:if="{{popActiveIndex==0}}">
+      <view class="pop_title">选择收货地址</view>
+
+      <view class="address_list_wrap">
+        <view class="address_list_item" wx:for="{{addressList}}" wx:key="time" bindtap="selectedAddress" data-index="{{index}}">
+          <van-icon name="circle" class="address_no_selected_icon" wx:if="{{addressActiveIndex != index}}" />
+          <van-icon name="passed" class="address_selected_icon" wx:if="{{addressActiveIndex == index}}"/>
+          <view class="address_info_wrapper">
+            <view class="address_name_wrap">许昌学院 {{item.dormitory}} {{item.building}} {{item.roomNumber}}</view>
+            <view class="address_phone_wrap">
+              <text>{{item.name}}</text>
+              <text>{{item.phone}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 选择时间节点 -->
+    <view class="pop_node" wx:if="{{popActiveIndex==1}}">
+      <van-datetime-picker
+        type="time"
+        value="{{ pickTime }}"
+        bind:confirm="onPickTimeClick"
+        bind:cancel="onPickTimeCancel"
+      />
+    </view>
+
+    <!-- 添加备注节点 -->
+    <view class="pop_node" wx:if="{{popActiveIndex==2}}">
+      <view class="remark_wrap">
+        <van-field
+          model:value="{{ reMark }}"
+          placeholder="请输入备注"
+          label="备注"
+          class="remark_input"
+          border="{{ false }}"
+        />
+      </view>
+      <van-button type="primary" class="remark_btn" block bindtap="handleCompleteRemark" >完成</van-button>
+    </view>
+  </van-popup>
+
+  <!-- 动作面板 -->
+  <van-action-sheet
+    show="{{ actionSheetShow }}"
+    actions="{{ pickModeList }}"
+    cancel-text="取消"
+    bind:close="onActionSheetClose"
+    bind:cancel="onActionSheetClose"
+    bind:select="onActionSheetSelect"
+  />
+
+  <!-- 轻提示节点 -->
+	<van-toast id="van-toast" />
 </view>

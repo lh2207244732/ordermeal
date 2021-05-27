@@ -37,7 +37,7 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数--
    */
   onLoad: async function (options) {
     Toast.loading({
@@ -46,12 +46,11 @@ Page({
       forbidClick: true,
     });
     const { id } = options
-
     //获取商品详情
     let productInfo = await this.getProductDetail(id)
     //获取是否收藏状态
     let isCollection = this.getCollectionStatus(productInfo)
-    
+
     this.setData({
       productInfo,
       isCollection
@@ -79,9 +78,11 @@ Page({
 
     //获取缓存中收藏夹数据
     let collList = getStorage('collectionList') || []
-    if (collList.indexOf(productInfo) > -1) {
-      res = true
-    }
+    collList.forEach(item => {
+      if (item._id == productInfo._id) {
+        res = true
+      }
+    })
     return res
   },
 
@@ -98,7 +99,12 @@ Page({
 
     if (isCollection) {//如果已赞，取消之
       //更新缓存
-      let delIndex = collList.indexOf(productInfo)
+      let delIndex
+      collList.forEach((item,index)=>{
+        if (item._id == productInfo._id) {
+          delIndex = index
+        }
+      })
       collList.splice(delIndex,1)
       //更新页面数据
       productInfo.collection--
@@ -134,6 +140,14 @@ Page({
     })
   },
 
+  //购买按钮点击
+  onPurchaseClick() {
+    wx.setStorageSync('purchaseData', this.data.productInfo)
+    wx.navigateTo({
+      url: '/pages/submitOrder/submitOrder',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -145,7 +159,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

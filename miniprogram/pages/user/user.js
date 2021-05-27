@@ -70,6 +70,9 @@ Page({
 
   //注销
   handleLogout() {
+    if (!isLogin()) {
+      return
+    }
     deleteStorage('userInfo')
     this.setData({
       userInfo: {}

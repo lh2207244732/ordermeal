@@ -125,3 +125,60 @@
   top: 600rpx;
   padding: 15rpx;
 }
+
+/* 弹框节点 */
+.pop_node{
+  padding: 40rpx 34rpx;
+  min-height: 440rpx;
+}
+
+.pop_title{
+  font-size: 30rpx;
+  font-weight: 700;
+  padding: 12rpx 0;
+  text-align: center;
+}
+
+.address_list_item{
+  display: flex;
+  align-items: center;
+  padding-left: 20rpx;
+}
+.address_selected_icon{
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #4fc08d;
+  margin-right: 34rpx;
+}
+.address_no_selected_icon{
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #888;
+  margin-right: 34rpx;
+}
+.address_info_wrapper{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  border-bottom: 2rpx solid #ddd;
+  padding: 23rpx 0;
+}
+.address_list_item:last-child .address_info_wrapper{
+  border: 0;
+}
+.address_name_wrap{
+  font-size: 32rpx;
+  font-weight: 700;
+}
+.address_phone_wrap{
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 18rpx;
+}
+.address_phone_wrap text {
+  margin-right: 20rpx;
+}
+.remark_wrap{
+  padding-top: 40rpx;
+  padding-bottom: 38rpx;
+}

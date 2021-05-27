@@ -76,5 +76,31 @@ collection: 0
 sales: 0
 status: 0 上架   1下架
  
-
+om_order  订单集合
+_id,
+address: {
+  name
+  phone
+  building
+  dormitory
+  roomNumber
+}
+product: {
+  
+}
+storeid: '',
+pickMode: '',
+payment: '',
+pickTime: '',
+reMark: '',
+status: , '待做餐' 1  '待取餐' 2  '已完成' 3   '已取消' 0
+queue: '',//排号
+registerTime: {
+  year,
+  month,
+  day,
+  hour,
+  minute,
+  second
+}
 */
