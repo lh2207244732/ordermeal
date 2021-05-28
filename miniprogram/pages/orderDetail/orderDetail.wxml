@@ -1,0 +1,96 @@
+<view class="page">
+
+  <!-- 排号部分 -->
+  <view class="order_num_section white_card">
+    <view class="order_top">
+      <text class="user_order_text">您的订单排号为</text>
+      <text class="user_order_num">{{ orderData.queue }}</text>
+    </view>
+    <view class="order_bottom flex_center">
+      <view class="surplus_people" bindtap="handleRefresh">
+        <text class="surplus_people_txt">前面还有 <text class="surplus_people_num">{{surplusPeople}}</text> 人</text>
+        <text class="refresh_txt">点击刷新</text>
+        <van-transition show="{{ refreshIconShow }}"
+          name=""
+          duration="{{ { enter: 1000, leave: 10 } }}"
+          enter-class="van-enter-class"
+          leave-class="van-leave-class"
+          enter-active-class="van-enter-active-class"
+          leave-active-class="van-leave-active-class"
+        >
+          <van-icon name="replay" class="refresh_icon" />
+        </van-transition>
+      </view>
+      <text></text>
+    </view>
+  </view>
+
+  <!-- 收货地址 -->
+  <view class="address_section white_card">
+    <view class="item_top">
+      <view class="item_top_right">
+        <van-icon name="location-o" class="edit_address_icon" />
+      </view>
+      <view class="item_top_left">
+        <view class="name_wrap">
+          <text class="name_txt">{{ orderData.address.name }}</text>
+          <text class="phone_txt">{{orderData.address.phone }}</text>
+        </view>
+        <view class="address_wrap">许昌学院 {{ orderData.address.dormitory }} {{ orderData.address.building }} {{ orderData.address.roomNumber }}</view>
+      </view>
+      
+    </view>
+  </view>
+
+  <!-- 商品数据 -->
+  <view class="product_section white_card">
+    
+    <!-- 商家信息 -->
+    <view class="store_info_wrap">
+      {{orderData.product.storeObj.name}} {{orderData.product.storeObj.diningRoom}}
+    </view>
+
+    <view class="product_card">
+      <view class="product_avatar_wrap">
+        <image mode="aspectFill" class="product_avatar" src="{{orderData.product.imageList[0]}}"></image>
+      </view>
+      <view class="product_title_wrap">
+        <view class="p_title ellipsis2">{{orderData.product.title}}</view>
+        <view class="p_price_wrap">
+          <text class="price_icon">￥</text>
+          <text class="price_num">{{orderData.product.price}}</text>
+        </view>
+      </view>
+      <view class="product_num_wrap">x1</view>
+    </view>
+    
+  </view>
+
+  <!-- 订单状态 -->
+  <view class="order_status_section white_card">
+    <van-steps steps="{{ cancelSteps }}" active="{{0}}" active-color="#969799" wx:if="{{orderData.status==0}}" />
+    <van-steps steps="{{ steps }}" active="{{ orderData.status-1 }}" active-icon="success" wx:if="{{orderData.status!=0}}"/>
+  </view>
+
+  <!-- 订单属性 -->
+  <view class="other_attr_section white_card">
+    <van-collapse value="{{ activeNames }}" bind:change="onChange" border="{{ false }}">
+      <van-collapse-item title="订单信息" name="1">
+        <van-cell-group border="{{ false }}">
+          <van-cell title="{{'订单编号:'+'    '+ orderData._id }}"/>
+          <van-cell title="{{'订单备注:'+'    '+ orderData.reMark }}"/>
+          <van-cell title="{{'取餐方式:'+'    '+ orderData.pickMode }}"/>
+          <van-cell title="{{'送餐时间:'+'    '+ orderData.pickTime }}"
+          wx:if="{{orderData.pickMode!='自取'}}"
+          />
+          <van-cell title="{{'付款方式:'+'    '+ orderData.payment}}"/>
+          <van-cell title="{{'订单总价:'+'    '+ orderData.totalPrice+'元'}}"/>
+          <van-cell title="{{'下单时间:'+'    '+ orderData.time}}" border="{{ false }}"/>
+        </van-cell-group>
+      </van-collapse-item>
+    </van-collapse>
+  </view>
+
+  <!-- 轻提示节点 -->
+	<van-toast id="van-toast" />
+</view>

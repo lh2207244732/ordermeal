@@ -204,6 +204,18 @@ Page({
           orders: _.inc(1)
         }
       })
+      //更新用户缓存数据
+      let uInfo = getStorage('userInfo')
+      uInfo.cost += data.totalPrice
+      uInfo.orders += 1
+      wx.setStorageSync('userInfo', uInfo)
+
+      //更新商品数据
+      await db.collection('om_product').doc(data.product._id).update({
+        data: {
+          sales: _.inc(1)
+        }
+      })
 
       //更新商家数据
       let sid = data.storeid
@@ -215,19 +227,19 @@ Page({
           orders: _.inc(1)
         }
       })
-      this.orderSuccess()
+      this.orderSuccess(addOrderRes._id)
     } else {//添加失败
       Toast.fail('排号失败')
     }
   },
 
   //排号成功回调
-  orderSuccess() {
+  orderSuccess(id) {
     Toast.success('排号成功')
     setTimeout(()=>{
-      // wx.redirectTo({
-      //   url: '/pages/',
-      // })
+      wx.redirectTo({
+        url: '/pages/orderDetail/orderDetail?id=' + id,
+      })
       console.log('okok');
     },300)
   },

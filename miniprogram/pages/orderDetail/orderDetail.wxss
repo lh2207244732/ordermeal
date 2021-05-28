@@ -1,0 +1,155 @@
+.page{
+  background-image: linear-gradient(to bottom, #19b5fe, #f2f2f2);
+  min-height: 100vh;
+  padding-top: 10rpx;
+  padding-bottom: 20rpx;
+}
+.order_top{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+  border-bottom: 2rpx solid #efefef;
+}
+.user_order_text{
+  font-size: 30rpx;
+  color: #898989;
+}
+.user_order_num{
+  font-size: 62rpx;
+  font-weight: 700;
+  color: #19b5fe;
+  padding-top: 20rpx;
+}
+
+.order_bottom{
+  padding: 10rpx 0;
+}
+.surplus_people{
+  display: flex;
+  align-items: center;
+  padding-top: 18rpx;
+  font-size: 28rpx;
+  color: #888;
+}
+.surplus_people_txt{
+  margin-right: 30rpx;
+}
+.surplus_people_num{
+  font-size: 30rpx;
+  color: #666;
+}
+.refresh_txt{
+  margin-right: 8rpx;
+}
+.van-enter-active-class{
+  transition: all 1s;
+}
+.van-leave-active-class{
+  transition: all .01s;
+}
+.van-enter-class{
+  transform: rotate(-360deg)
+}
+
+/* 收货地址部分 */
+.item_top{
+  display: flex;
+  align-items: center;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.item_top_left{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+.item_top_right{
+  margin-right: 30rpx;
+}
+.name_wrap{
+  display: flex;
+  align-items: center;
+}
+.name_txt{
+  font-size: 34rpx;
+  color: #444;
+}
+.phone_txt{
+  font-size: 26rpx;
+  color: #999;
+  margin-left: 16rpx;
+}
+.address_wrap{
+  font-size: 28rpx;
+  color: #444;
+  margin-top: 18rpx;
+}
+.edit_address_icon{
+  font-size: 38rpx;
+  color: #888;
+}
+
+/* 商品部分 */
+.product_section{
+  top: 240rpx;
+  padding-bottom: 32rpx;
+}
+.store_info_wrap{
+  font-size: 30rpx;
+  color: #333;
+  padding-top: 16rpx;
+  padding-bottom: 18rpx;
+  margin-bottom: 28rpx;
+  border-bottom: 2rpx solid #cdcdcd;
+}
+
+.product_card{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product_avatar_wrap{
+  width: 140rpx;
+}
+.product_title_wrap{
+  width: 410rpx;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+.product_num_wrap{
+  width: 52rpx;
+}
+
+.product_avatar{
+  width: 152rpx;
+  height: 152rpx;
+  border-radius: 24rpx;
+}
+
+.p_title{
+  font-size: 28rpx;
+  color: #555;
+}
+.p_price_wrap{
+  margin-top: 24rpx;
+}
+.price_icon{
+  font-size: 26rpx;
+  color: #666;
+}
+.price_num{
+  font-size: 32rpx;
+  color: #333;
+}
+.product_num_wrap{
+  font-size: 28rpx;
+  color: #888;
+}
+
+.other_attr_section{
+  padding-left: 0;
+  padding-right: 0;
+}

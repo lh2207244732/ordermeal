@@ -63,6 +63,12 @@
         {
           "name": "提交订单",
           "pathName": "pages/submitOrder/submitOrder",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "订单详情",
+          "pathName": "pages/orderDetail/orderDetail",
           "scene": null
         }
       ]

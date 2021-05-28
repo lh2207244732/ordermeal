@@ -49,7 +49,7 @@
 		</view>
 
 		<view class="count_info_item">
-			<text class="count_num">98</text>
+			<text class="count_num">00</text>
 			<text class="count_name">收藏夹</text>
 		</view>
 	</view>

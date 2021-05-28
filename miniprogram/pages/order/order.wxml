@@ -2,11 +2,11 @@
 
   <!-- 顶部tab -->
   <view class="top_tab_wrap">
-    <van-tabs animated>
-      <van-tab title="全部">
+    <van-tabs animated bind:click="onTabClick">
+      <van-tab title="全部" name="{{4}}">
         <van-empty description="暂无订单" />
       </van-tab>
-      <van-tab title="待做餐">
+      <van-tab title="待做餐" name="{{1}}">
         <view class="order_list_wrap">
 
           <view class="order_item">
@@ -70,11 +70,14 @@
           
         </view>
       </van-tab>
-      <van-tab title="待取餐">内容 3</van-tab>
-      <van-tab title="待评价">内容 4</van-tab>
-      <van-tab title="退款/取消">内容 4</van-tab>
+      <van-tab title="待取餐" name="{{2}}">内容 3</van-tab>
+      <van-tab title="已完成" name="{{3}}">内容 4</van-tab>
+      <van-tab title="退款/取消" name="{{0}}">内容 4</van-tab>
     </van-tabs>
   </view>
+
+  <!-- 轻提示节点 -->
+	<van-toast id="van-toast" />
 
 </view>
 
