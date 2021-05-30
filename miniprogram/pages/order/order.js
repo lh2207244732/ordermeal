@@ -2,7 +2,7 @@ const app = getApp()
 const db = wx.cloud.database()
 const _ = db.command
 const { Toast } = app.globalData
-const { getStorage } = require('../../utils/index.js')
+const { getStorage, isLogin } = require('../../utils/index.js')
 Page({
 
   /**
@@ -25,6 +25,11 @@ Page({
       duration: 10000,
       forbidClick: true,
     });
+
+    if (!isLogin()) {
+      Toast.fail('暂未登录')
+      return
+    }
     let { uInfo } = this.data
     let index = event.detail.name
     let res

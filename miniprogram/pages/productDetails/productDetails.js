@@ -142,6 +142,10 @@ Page({
 
   //购买按钮点击
   onPurchaseClick() {
+    if (!isLogin()) {//如果没登录
+      Toast.fail('请先登录')
+      return
+    }
     wx.setStorageSync('purchaseData', this.data.productInfo)
     wx.navigateTo({
       url: '/pages/submitOrder/submitOrder',

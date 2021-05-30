@@ -1,0 +1,32 @@
+<navigator 
+  class="product_item" 
+  url="/pages/productDetails/productDetails?id={{item._id}}"
+>
+  <image class="product_main_img" mode="aspectFill" src="{{item.imageList[0]}}"></image>
+  <view class="product_info">
+    <!-- 商品标题 -->
+    <view class="product_title ellipsis2">{{item.title}}</view>
+    <view class="product_information">
+      <!-- 价格 -->
+      <view class="product_price">
+        <view class="price_wrap">
+          <text class="price_icon">￥</text>
+          <text class="price_num">{{item.price}}</text>
+        </view>
+
+        <view class="sales_wrap">
+          <text class="sales_txt">已售</text>
+          <text class="sales_num">{{item.sales}}</text>
+        </view>
+      </view>
+      <!-- 餐厅 -->
+      <view class="product_address">
+        <view class="store_name_wrap">
+          <text class="store_name">查看详情</text>
+          <van-icon name="arrow" />
+        </view>
+        <van-tag type="primary">{{item.diningRoom}}</van-tag>
+      </view>
+    </view>
+  </view>
+</navigator>

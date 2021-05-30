@@ -1,0 +1,7 @@
+<view class="page">
+
+
+
+  <!-- 轻提示节点 -->
+	<van-toast id="van-toast" />
+</view>

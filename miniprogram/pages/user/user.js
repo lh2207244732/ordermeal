@@ -12,9 +12,10 @@ Page({
    */
   data: {
     userInfo: {
-      cost: '-',
-      orders: '-'
-    }
+      cost: 0,
+      orders: 0
+    },
+    collectionLen: 0
   },
   
   //登录
@@ -75,16 +76,10 @@ Page({
     }
     deleteStorage('userInfo')
     this.setData({
-      userInfo: {}
+      userInfo: {},
+      collectionLen: 0
     })
     Toast.success('退出成功');
-  },
-
-  //未登录点击事件
-  handleNoLogin() {
-    if (!isLogin()) {
-      Toast.fail('暂未登录');
-    }
   },
 
   //点击我的店铺
@@ -103,6 +98,28 @@ Page({
         url: '/pages/storeManage/storeManage?openid=' + openid,
       })
     }
+  },
+
+  //去收藏页
+  toCollectionList() {
+    if (!isLogin()) {
+      Toast.fail('暂未登录');
+      return
+    }
+    wx.navigateTo({
+      url: '/pages/collectionList/collectionList',
+    })
+  },
+
+  //去收货地址页
+  toAddress() {
+    if (!isLogin()) {
+      Toast.fail('暂未登录');
+      return
+    }
+    wx.navigateTo({
+      url: '/pages/address/address',
+    })
   },
 
   /**
@@ -126,9 +143,11 @@ Page({
     //检测登录  查缓存中数据
     //1. 如果有，无需再请求登录
     const userInfo = getStorage('userInfo')
+    const collectionList = getStorage('collectionList')
     if (userInfo.openid) {
       this.setData({
-        userInfo
+        userInfo,
+        collectionLen: collectionList.length
       })
     }
   },

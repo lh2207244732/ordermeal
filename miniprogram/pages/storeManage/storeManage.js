@@ -98,6 +98,11 @@ Page({
         url: '/pages/publishProduct/publishProduct?storeid=' + openid + '&diningRoom=' + diningRoom,
       })
     }
+    if (index == 1) {
+      wx.navigateTo({
+        url: '/pages/productManage/productManage?storeid=' + openid,
+      })
+    }
     if (index == 8) {
       wx.navigateTo({
         url: '/pages/storeDetails/storeDetails?storeid=' + openid,

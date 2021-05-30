@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "productItem": "/components/productItem/productItem"
+  },
+  "navigationBarBackgroundColor": "#f5f5f5",
+  "navigationBarTitleText": "收藏夹"
+}

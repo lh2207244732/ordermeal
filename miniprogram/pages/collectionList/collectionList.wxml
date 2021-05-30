@@ -1,19 +1,4 @@
 <view class="page">
-
-  <!-- 搜索框 -->
-  <view class="search_ipt_section">
-    <van-search
-      value="{{keyword}}"
-      shape="round"
-      show-action
-      background="#19b5fe"
-      placeholder="请输入搜索关键词"
-      bind:search="onSearch"
-      bind:change="onChange"
-      bind:cancel="onCancel"
-    />
-  </view>
-
   <!-- 结果列表 -->
   <view class="list_section" wx:if="{{list.length!=0}}">
     <block wx:for="{{list}}" wx:key="_id">
@@ -27,5 +12,5 @@
   </view>
 
   <!-- 轻提示节点 -->
-	<van-toast id="van-toast" />
+  <van-toast id="van-toast" />
 </view>
