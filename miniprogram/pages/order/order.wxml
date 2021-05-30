@@ -4,75 +4,388 @@
   <view class="top_tab_wrap">
     <van-tabs animated bind:click="onTabClick">
       <van-tab title="全部" name="{{4}}">
-        <van-empty description="暂无订单" />
-      </van-tab>
-      <van-tab title="待做餐" name="{{1}}">
+        <!-- 空状态 -->
+        <van-empty description="暂无订单" wx:if="{{s4List.length==0}}"/>
         <view class="order_list_wrap">
-
-          <view class="order_item">
+          <view class="order_item" wx:for="{{s4List}}" wx:key="_id">
             <view class="store_wrap">
-              <view class="store_info">
-                <image class="store_avatar" mode="aspectFill" src="https://img2.baidu.com/it/u=806680654,2055993577&fm=26&fmt=auto&gp=0.jpg"></image>
-                <text class="store_name">德克士餐厅怡海店</text>
+              <view class="store_info" bindtap="toStoreDetail" data-id="{{item.storeid}}">
+                <image class="store_avatar" mode="aspectFill" src="{{item.product.storeObj.logoUrl}}"></image>
+                <text class="store_name">{{item.product.storeObj.name}}</text>
                 <van-icon name="arrow" class="store_arrow" />
               </view>
-              <view class="order_status">待取餐</view>
+              <view class="order_status" style="color: #888" wx:if="{{item.status==0}}">已取消</view>
+              <view class="order_status" wx:if="{{item.status==1}}">待做餐</view>
+              <view class="order_status" wx:if="{{item.status==2}}">待取餐</view>
+              <view class="order_status" style="color: #1aad19" wx:if="{{item.status==3}}">已完成</view>
             </view>
-            <view class="order_product_list">
+            <view class="order_product_list" bindtap="toOrderDetail" data-id="{{item._id}}">
               <van-card 
-            num="2"
-            price="2.00"
-            desc="描述信息"
-            title="商品标题"
-            thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
-          />
-          <van-card 
-            num="2"
-            price="2.00"
-            desc="描述信息"
-            title="商品标题"
-            thumb="https://img01.yzcdn.cn/vant/ipad.jpeg"
-          />
+                num="1"
+                price="{{item.product.price}}"
+                desc="{{item.product.describe}}"
+                title="{{item.product.title}}"
+                thumb="{{item.product.imageList[0]}}"
+              />
             </view>
             <view class="order_price_wrap">
               <view class="order_index_wrap">
                 <text class="order_index_text">您的排号:</text>
-                <text class="order_index_num">234</text>
+                <text class="order_index_num">{{item.queue}}</text>
               </view>
               <view class="total_price_wrap">
-                <text class="total_price_text order_index_text">实付款:</text>
+                <text class="total_price_text order_index_text">订单总价:</text>
                 <text class="price_icon">￥</text>
-                <text class="total_price_num">3423</text>
+                <text class="total_price_num">{{item.product.price}}</text>
               </view>
             </view>
-            <view class="">
-              
+           
+            <!-- 商家界面按钮部分 -->
+            <view class="order_operation_wrap" wx:if="{{uInfo.role == 'store'}}">
+              <van-button 
+                size="small" 
+                plain 
+                type="primary" 
+                bindtap="toOrderDetail" 
+                data-id="{{item._id}}"
+              >查看详情</van-button>
+              <van-button 
+                size="small" 
+                type="danger" 
+                wx:if="{{item.status==1}}" 
+                bindtap="handleUpdateStatus" 
+                data-id="{{item._id}}"
+              >我已做餐</van-button>
+              <van-button size="small" wx:if="{{item.status==2}}">用户待取餐</van-button>
+              <van-button size="small" type="primary" wx:if="{{item.status==3}}">订单已完成</van-button>
+              <van-button size="small" wx:if="{{item.status==0}}">订单已取消</van-button>
             </view>
-            <view class="order_operation_wrap">
-              <van-button size="small">申请退款</van-button>
-              <van-button size="small" type="danger">确认收货</van-button>
+
+            <!-- 用户界面按钮部分 -->
+            <view class="order_operation_wrap" wx:if="{{uInfo.role == 'user'}}">
+              <van-button 
+                size="small"
+                plain
+                type="danger"
+                wx:if="{{item.status != 0}}"
+                bindtap="handleCancelOrder" 
+                data-id="{{item._id}}"
+                data-status="{{item.status}}"
+                data-customerid="{{item.customerid}}"
+                data-storeid="{{item.storeid}}"
+                data-totalprice="{{item.product.price}}"
+                data-productid="{{item.product._id}}"
+              >取消订单</van-button>
+              <van-button 
+                size="small" 
+                plain 
+                type="primary" 
+                bindtap="toOrderDetail" 
+                data-id="{{item._id}}"
+              >查看详情</van-button>
+              <van-button 
+                size="small" 
+                type="danger"
+                wx:if="{{item.status==2}}"
+                bindtap="handleUpdateStatus" 
+                data-id="{{item._id}}"
+              >确认取餐</van-button>
+              <van-button size="small" type="primary" wx:if="{{item.status==3}}">订单已完成</van-button>
+              <van-button size="small" wx:if="{{item.status==0}}">订单已取消</van-button>
             </view>
-          
-          
           </view>
-          <view class="order_item">
-            <view class="store_wrap">
-              <view class="store_info"></view>
-              <view class="order_status">待取餐</view>
-            </view>
-          </view>
-          <view class="order_item">
-            <view class="store_wrap">
-              <view class="store_info"></view>
-              <view class="order_status">待取餐</view>
-            </view>
-          </view>
-          
         </view>
       </van-tab>
-      <van-tab title="待取餐" name="{{2}}">内容 3</van-tab>
-      <van-tab title="已完成" name="{{3}}">内容 4</van-tab>
-      <van-tab title="退款/取消" name="{{0}}">内容 4</van-tab>
+      <van-tab title="待做餐" name="{{1}}">
+        <!-- 空状态 -->
+        <van-empty description="暂无订单" wx:if="{{s1List.length==0}}"/>
+        <view class="order_list_wrap">
+          <view class="order_item" wx:for="{{s1List}}" wx:key="_id">
+            <view class="store_wrap">
+              <view class="store_info" bindtap="toStoreDetail" data-id="{{item.storeid}}">
+                <image class="store_avatar" mode="aspectFill" src="{{item.product.storeObj.logoUrl}}"></image>
+                <text class="store_name">{{item.product.storeObj.name}}</text>
+                <van-icon name="arrow" class="store_arrow" />
+              </view>
+              <view class="order_status" wx:if="{{item.status==1}}">待做餐</view>
+            </view>
+            <view class="order_product_list" bindtap="toOrderDetail" data-id="{{item._id}}">
+              <van-card 
+                num="1"
+                price="{{item.product.price}}"
+                desc="{{item.product.describe}}"
+                title="{{item.product.title}}"
+                thumb="{{item.product.imageList[0]}}"
+              />
+            </view>
+            <view class="order_price_wrap">
+              <view class="order_index_wrap">
+                <text class="order_index_text">您的排号:</text>
+                <text class="order_index_num">{{item.queue}}</text>
+              </view>
+              <view class="total_price_wrap">
+                <text class="total_price_text order_index_text">订单总价:</text>
+                <text class="price_icon">￥</text>
+                <text class="total_price_num">{{item.product.price}}</text>
+              </view>
+            </view>
+           
+            <!-- 商家界面按钮部分 -->
+            <view class="order_operation_wrap" wx:if="{{uInfo.role == 'store'}}">
+              <van-button 
+                size="small" 
+                plain 
+                type="primary" 
+                bindtap="toOrderDetail" 
+                data-id="{{item._id}}"
+              >查看详情</van-button>
+              <van-button 
+                size="small" 
+                type="danger" 
+                wx:if="{{item.status==1}}" 
+                bindtap="handleUpdateStatus" 
+                data-id="{{item._id}}"
+              >我已做餐</van-button>
+            </view>
+
+            <!-- 用户界面按钮部分 -->
+            <view class="order_operation_wrap" wx:if="{{uInfo.role == 'user'}}">
+              <van-button 
+                size="small"
+                plain
+                type="danger"
+                wx:if="{{item.status != 0}}"
+                bindtap="handleCancelOrder" 
+                data-id="{{item._id}}"
+                data-status="{{item.status}}"
+                data-customerid="{{item.customerid}}"
+                data-storeid="{{item.storeid}}"
+                data-totalprice="{{item.product.price}}"
+                data-productid="{{item.product._id}}"
+              >取消订单</van-button>
+              <van-button 
+                size="small" 
+                plain 
+                type="primary" 
+                bindtap="toOrderDetail" 
+                data-id="{{item._id}}"
+              >查看详情</van-button>
+            </view>
+          </view>
+        </view>
+      </van-tab>
+      <van-tab title="待取餐" name="{{2}}">
+        <!-- 空状态 -->
+        <van-empty description="暂无订单" wx:if="{{s2List.length==0}}"/>
+        <view class="order_list_wrap">
+          <view class="order_item" wx:for="{{s2List}}" wx:key="_id">
+            <view class="store_wrap">
+              <view class="store_info" bindtap="toStoreDetail" data-id="{{item.storeid}}">
+                <image class="store_avatar" mode="aspectFill" src="{{item.product.storeObj.logoUrl}}"></image>
+                <text class="store_name">{{item.product.storeObj.name}}</text>
+                <van-icon name="arrow" class="store_arrow" />
+              </view>
+              <view class="order_status" wx:if="{{item.status==2}}">待取餐</view>
+            </view>
+            <view class="order_product_list" bindtap="toOrderDetail" data-id="{{item._id}}">
+              <van-card 
+                num="1"
+                price="{{item.product.price}}"
+                desc="{{item.product.describe}}"
+                title="{{item.product.title}}"
+                thumb="{{item.product.imageList[0]}}"
+              />
+            </view>
+            <view class="order_price_wrap">
+              <view class="order_index_wrap">
+                <text class="order_index_text">您的排号:</text>
+                <text class="order_index_num">{{item.queue}}</text>
+              </view>
+              <view class="total_price_wrap">
+                <text class="total_price_text order_index_text">订单总价:</text>
+                <text class="price_icon">￥</text>
+                <text class="total_price_num">{{item.product.price}}</text>
+              </view>
+            </view>
+           
+            <!-- 商家界面按钮部分 -->
+            <view class="order_operation_wrap" wx:if="{{uInfo.role == 'store'}}">
+              <van-button 
+                size="small" 
+                plain 
+                type="primary" 
+                bindtap="toOrderDetail" 
+                data-id="{{item._id}}"
+              >查看详情</van-button>
+              <van-button size="small" wx:if="{{item.status==2}}">用户待取餐</van-button>
+            </view>
+
+            <!-- 用户界面按钮部分 -->
+            <view class="order_operation_wrap" wx:if="{{uInfo.role == 'user'}}">
+              <van-button 
+                size="small"
+                plain
+                type="danger"
+                wx:if="{{item.status != 0}}"
+                bindtap="handleCancelOrder" 
+                data-id="{{item._id}}"
+                data-status="{{item.status}}"
+                data-customerid="{{item.customerid}}"
+                data-storeid="{{item.storeid}}"
+                data-totalprice="{{item.product.price}}"
+                data-productid="{{item.product._id}}"
+              >取消订单</van-button>
+              <van-button 
+                size="small" 
+                plain 
+                type="primary" 
+                bindtap="toOrderDetail" 
+                data-id="{{item._id}}"
+              >查看详情</van-button>
+              <van-button 
+                size="small" 
+                type="danger"
+                wx:if="{{item.status==2}}"
+                bindtap="handleUpdateStatus" 
+                data-id="{{item._id}}"
+              >确认取餐</van-button>
+            </view>
+          </view>
+        </view>
+      </van-tab>
+      <van-tab title="已完成" name="{{3}}">
+        <!-- 空状态 -->
+        <van-empty description="暂无订单" wx:if="{{s3List.length==0}}"/>
+        <view class="order_list_wrap">
+          <view class="order_item" wx:for="{{s3List}}" wx:key="_id">
+            <view class="store_wrap">
+              <view class="store_info" bindtap="toStoreDetail" data-id="{{item.storeid}}">
+                <image class="store_avatar" mode="aspectFill" src="{{item.product.storeObj.logoUrl}}"></image>
+                <text class="store_name">{{item.product.storeObj.name}}</text>
+                <van-icon name="arrow" class="store_arrow" />
+              </view>
+              <view class="order_status" style="color: #1aad19" wx:if="{{item.status==3}}">已完成</view>
+            </view>
+            <view class="order_product_list" bindtap="toOrderDetail" data-id="{{item._id}}">
+              <van-card 
+                num="1"
+                price="{{item.product.price}}"
+                desc="{{item.product.describe}}"
+                title="{{item.product.title}}"
+                thumb="{{item.product.imageList[0]}}"
+              />
+            </view>
+            <view class="order_price_wrap">
+              <view class="order_index_wrap">
+                <text class="order_index_text">您的排号:</text>
+                <text class="order_index_num">{{item.queue}}</text>
+              </view>
+              <view class="total_price_wrap">
+                <text class="total_price_text order_index_text">订单总价:</text>
+                <text class="price_icon">￥</text>
+                <text class="total_price_num">{{item.product.price}}</text>
+              </view>
+            </view>
+           
+            <!-- 商家界面按钮部分 -->
+            <view class="order_operation_wrap" wx:if="{{uInfo.role == 'store'}}">
+              <van-button 
+                size="small" 
+                plain 
+                type="primary" 
+                bindtap="toOrderDetail" 
+                data-id="{{item._id}}"
+              >查看详情</van-button>
+              <van-button size="small" type="primary" wx:if="{{item.status==3}}">订单已完成</van-button>
+            </view>
+
+            <!-- 用户界面按钮部分 -->
+            <view class="order_operation_wrap" wx:if="{{uInfo.role == 'user'}}">
+              <van-button 
+                size="small"
+                plain
+                type="danger"
+                wx:if="{{item.status != 0}}"
+                bindtap="handleCancelOrder" 
+                data-id="{{item._id}}"
+                data-status="{{item.status}}"
+                data-customerid="{{item.customerid}}"
+                data-storeid="{{item.storeid}}"
+                data-totalprice="{{item.product.price}}"
+                data-productid="{{item.product._id}}"
+              >取消订单</van-button>
+              <van-button 
+                size="small" 
+                plain 
+                type="primary" 
+                bindtap="toOrderDetail" 
+                data-id="{{item._id}}"
+              >查看详情</van-button>
+              <van-button size="small" type="primary" wx:if="{{item.status==3}}">订单已完成</van-button>
+            </view>
+          </view>
+        </view>
+      </van-tab>
+      <van-tab title="退款/取消" name="{{0}}">
+        <!-- 空状态 -->
+        <van-empty description="暂无订单" wx:if="{{s0List.length==0}}"/>
+        <view class="order_list_wrap">
+          <view class="order_item" wx:for="{{s0List}}" wx:key="_id">
+            <view class="store_wrap">
+              <view class="store_info" bindtap="toStoreDetail" data-id="{{item.storeid}}">
+                <image class="store_avatar" mode="aspectFill" src="{{item.product.storeObj.logoUrl}}"></image>
+                <text class="store_name">{{item.product.storeObj.name}}</text>
+                <van-icon name="arrow" class="store_arrow" />
+              </view>
+              <view class="order_status" style="color: #888" wx:if="{{item.status==0}}">已取消</view>
+            </view>
+            <view class="order_product_list" bindtap="toOrderDetail" data-id="{{item._id}}">
+              <van-card 
+                num="1"
+                price="{{item.product.price}}"
+                desc="{{item.product.describe}}"
+                title="{{item.product.title}}"
+                thumb="{{item.product.imageList[0]}}"
+              />
+            </view>
+            <view class="order_price_wrap">
+              <view class="order_index_wrap">
+                <text class="order_index_text">您的排号:</text>
+                <text class="order_index_num">{{item.queue}}</text>
+              </view>
+              <view class="total_price_wrap">
+                <text class="total_price_text order_index_text">订单总价:</text>
+                <text class="price_icon">￥</text>
+                <text class="total_price_num">{{item.product.price}}</text>
+              </view>
+            </view>
+           
+            <!-- 商家界面按钮部分 -->
+            <view class="order_operation_wrap" wx:if="{{uInfo.role == 'store'}}">
+              <van-button 
+                size="small" 
+                plain 
+                type="primary" 
+                bindtap="toOrderDetail" 
+                data-id="{{item._id}}"
+              >查看详情</van-button>
+              <van-button size="small" wx:if="{{item.status==0}}">订单已取消</van-button>
+            </view>
+
+            <!-- 用户界面按钮部分 -->
+            <view class="order_operation_wrap" wx:if="{{uInfo.role == 'user'}}">
+              <van-button 
+                size="small" 
+                plain 
+                type="primary" 
+                bindtap="toOrderDetail" 
+                data-id="{{item._id}}"
+              >查看详情</van-button>
+              <van-button size="small" wx:if="{{item.status==0}}">订单已取消</van-button>
+            </view>
+          </view>
+        </view>
+      </van-tab>
     </van-tabs>
   </view>
 

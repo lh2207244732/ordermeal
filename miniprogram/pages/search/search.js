@@ -1,11 +1,68 @@
-// pages/search/search.js
+const app = getApp()
+const db = wx.cloud.database()
+const _ = db.command
+const { Toast } = app.globalData
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    keyword: '',
+    list: []
+  },
 
+  //输入
+  onChange(e) {
+    this.setData({
+      keyword: e.detail,
+    });
+  },
+  //点击搜索
+  async onSearch() {
+    Toast.loading({
+      message: '搜索中...',
+      duration: 10000,
+      forbidClick: true,
+    });
+    let { keyword } = this.data
+    const listRes = await db.collection('om_product').where(_.or([
+      {
+        title: db.RegExp({
+          regexp: '.*' + keyword,
+          options: 'i',
+        })
+      },
+      {
+        diningRoom: db.RegExp({
+          regexp: '.*' + keyword,
+          options: 'i',
+        })
+      },
+      {
+        sort: db.RegExp({
+          regexp: '.*' + keyword,
+          options: 'i',
+        })
+      }
+    ])).get()
+
+    this.setData({
+      list: listRes.data
+    })
+    Toast.clear()
+  },
+
+  onCancel() {
+    //数据清空
+    this.setData({
+      keyword: '',
+      list: []
+    })
+    //返回
+    wx.navigateBack({
+      delta: 1,
+    })
   },
 
   /**

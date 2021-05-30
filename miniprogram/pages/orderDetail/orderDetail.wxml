@@ -2,9 +2,14 @@
 
   <!-- 排号部分 -->
   <view class="order_num_section white_card">
-    <view class="order_top">
+    <!-- 订单正常状态时显示 -->
+    <view class="order_top" wx:if="{{orderData.status!=0}}">
       <text class="user_order_text">您的订单排号为</text>
       <text class="user_order_num">{{ orderData.queue }}</text>
+    </view>
+    <!-- 订单取消时显示 -->
+    <view class="order_top" wx:if="{{orderData.status==0}}">
+      <text class="user_order_text">该订单已取消</text>
     </view>
     <view class="order_bottom flex_center">
       <view class="surplus_people" bindtap="handleRefresh">
@@ -67,9 +72,8 @@
   </view>
 
   <!-- 订单状态 -->
-  <view class="order_status_section white_card">
-    <van-steps steps="{{ cancelSteps }}" active="{{0}}" active-color="#969799" wx:if="{{orderData.status==0}}" />
-    <van-steps steps="{{ steps }}" active="{{ orderData.status-1 }}" active-icon="success" wx:if="{{orderData.status!=0}}"/>
+  <view class="order_status_section white_card" wx:if="{{orderData.status!=0}}">
+    <van-steps steps="{{ steps }}" active="{{ orderData.status-1 }}" active-icon="success"/>
   </view>
 
   <!-- 订单属性 -->
@@ -77,15 +81,15 @@
     <van-collapse value="{{ activeNames }}" bind:change="onChange" border="{{ false }}">
       <van-collapse-item title="订单信息" name="1">
         <van-cell-group border="{{ false }}">
-          <van-cell title="{{'订单编号:'+'    '+ orderData._id }}"/>
-          <van-cell title="{{'订单备注:'+'    '+ orderData.reMark }}"/>
-          <van-cell title="{{'取餐方式:'+'    '+ orderData.pickMode }}"/>
-          <van-cell title="{{'送餐时间:'+'    '+ orderData.pickTime }}"
+          <van-cell title="{{'订单编号:'+'  '+ orderData._id }}"/>
+          <van-cell title="{{'订单备注:'+'  '+ orderData.reMark }}"/>
+          <van-cell title="{{'取餐方式:'+'  '+ orderData.pickMode }}"/>
+          <van-cell title="{{'送餐时间:'+'  '+ orderData.pickTime }}"
           wx:if="{{orderData.pickMode!='自取'}}"
           />
-          <van-cell title="{{'付款方式:'+'    '+ orderData.payment}}"/>
-          <van-cell title="{{'订单总价:'+'    '+ orderData.totalPrice+'元'}}"/>
-          <van-cell title="{{'下单时间:'+'    '+ orderData.time}}" border="{{ false }}"/>
+          <van-cell title="{{'付款方式:'+'  '+ orderData.payment}}"/>
+          <van-cell title="{{'订单总价:'+'  '+ orderData.product.price+'元'}}"/>
+          <van-cell title="{{'下单时间:'+'  '+ orderData.time}}" border="{{ false }}"/>
         </van-cell-group>
       </van-collapse-item>
     </van-collapse>

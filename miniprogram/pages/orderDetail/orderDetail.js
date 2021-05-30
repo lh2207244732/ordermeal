@@ -23,7 +23,7 @@ Page({
 
   handleRefresh() {
     const { status } = this.data.orderData
-    if (status == 0 || status == 2) {
+    if (status == 0 || status == 2 || status == 3) {
       Toast.fail('订单已结束')
       return
     }
